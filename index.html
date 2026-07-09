@@ -80,24 +80,24 @@ td.y{background:var(--amber-tint)!important}
 .ipad .side .sign{margin:14px 11px 0;background:#E4032E;color:#fff;text-align:center;border-radius:20px;padding:8px 6px;font-weight:700;font-size:12.5px;cursor:pointer;border:none;width:calc(100% - 22px);font-family:var(--sans)}
 .ipad .cnt{flex:1;padding:18px 24px;min-width:0}
 .ipad h4{font-size:18px;font-weight:700;color:#222;border-left:4px solid #00A99D;padding-left:9px;margin:0 0 12px}
-.qlbl{font-size:13px;color:#333;margin:11px 0 7px}
-.pill{display:inline-flex;align-items:center;gap:7px;border:1.5px solid #DDD;border-radius:8px;padding:7px 20px 7px 13px;margin-right:10px;cursor:pointer;font-size:13px;background:#FAFAFA;user-select:none}
+.qlbl{font-size:13px;color:#333;margin:16px 0 8px}
+.pill{display:inline-flex;align-items:center;gap:7px;border:1.5px solid #DDD;border-radius:8px;padding:7px 20px 7px 13px;margin:0 8px 8px 0;cursor:pointer;font-size:13px;background:#FAFAFA;user-select:none}
 .pill input{accent-color:#12A150}
 .pill.on{border-color:#12A150;background:#F2FBF5}
-.subq{display:none;margin:9px 0 3px}
+.subq{display:none;margin:16px 0 0}
 .subq .qlbl{font-weight:600}
-.pol{border:1.5px solid #DDD;border-radius:13px;padding:11px 15px;margin:9px 0;display:flex;gap:11px;align-items:flex-start;font-size:13px;position:relative}
+.pol{border:1.5px solid #DDD;border-radius:13px;padding:11px 15px;margin:8px 0;display:flex;gap:11px;align-items:flex-start;font-size:13px;position:relative}
 .pol input{margin-top:3px;accent-color:#12A150;transform:scale(1.15)}
 .pol .ref{position:absolute;top:7px;right:13px;font-size:10px;color:#999;font-family:var(--mono)}
 .pol .nm{font-weight:700}
 .pol .del{position:absolute;bottom:7px;right:13px;font-size:11.5px;color:#C8102E;background:none;border:none;cursor:pointer;font-family:var(--sans)}
 .pol.sysp .del{display:none}
-.hint{font-size:11px;color:#999;margin:3px 0 7px}
+.hint{font-size:11px;color:#999;margin:0 0 8px}
 .addp{border:1.5px solid #E4032E;background:#fff;color:#E4032E;border-radius:18px;padding:6px 16px;font-size:12.5px;cursor:pointer;float:right;font-family:var(--sans)}
 .tot{clear:both;border:1px solid #E5E5E5;border-radius:12px;padding:11px 16px;margin:14px 0 6px;max-width:290px}
 .tot .r{display:flex;justify-content:space-between;font-size:13px;padding:2px 0}
 .tot .r b{font-family:var(--mono)}
-.fx{text-align:center;font-size:11.5px;color:#8a6d3b;margin:9px 0 2px}
+.fx{text-align:center;font-size:11.5px;color:#8a6d3b;margin:8px 0 2px}
 /* modal */
 .mask{display:none;position:absolute;inset:0;background:rgba(0,0,0,.42);z-index:20;align-items:center;justify-content:center}
 .mask.show{display:flex}
@@ -108,7 +108,7 @@ td.y{background:var(--amber-tint)!important}
 .mdl .ok{display:block;width:100%;background:#E4032E;color:#fff;border:none;border-radius:20px;padding:9px;font-weight:700;font-size:14px;cursor:pointer;font-family:var(--sans)}
 .mdl.pass .ok{background:var(--ok)}
 #f-ok{background:#E4032E!important}
-.fld{margin-bottom:11px}
+.fld{margin-bottom:8px}
 .fld label{display:block;font-size:12.5px;color:#555;margin-bottom:4px}
 .fld input{width:100%;border:1.5px solid #DDD;border-radius:8px;padding:8px 10px;font-size:13px;font-family:var(--sans)}
 .fld input:focus{outline:none;border-color:#12A150}
@@ -130,6 +130,16 @@ td.y{background:var(--amber-tint)!important}
 .lgr .k{color:var(--muted);flex:none}
 .jarrow{position:fixed;z-index:900;font-size:30px;font-weight:900;color:var(--green-deep);pointer-events:none;opacity:0;transition:opacity .25s ease;font-family:Arial,sans-serif;line-height:1;text-shadow:0 1px 2px rgba(255,255,255,.9)}
 .jarrow.show{opacity:1}
+.qdel{border:1.5px solid var(--line);background:#fff;border-radius:6px;padding:3px 7px;cursor:pointer;font-size:13px;color:#E4032E;flex:none}
+.qdel:hover{border-color:#E4032E;background:#fdecef}
+.qstatus{font-family:var(--sans);font-size:12px;padding:4px 6px;border:1.5px solid var(--line);border-radius:7px;background:#fff;color:var(--ink);cursor:pointer;width:100%}
+.qstatus:hover{border-color:var(--green)}
+.qstatus:focus{outline:none;border-color:var(--green)}
+.addq-toggle{font-family:var(--mono);font-size:13px;padding:7px 14px;border:1.5px solid var(--green);border-radius:8px;background:#fff;color:var(--green-deep);cursor:pointer}
+.addq-toggle:hover{background:var(--panel2)}
+.addq-save{font-family:var(--sans);font-size:13px;padding:7px 16px;border:none;border-radius:7px;background:var(--green);color:#fff;cursor:pointer;font-weight:600}
+.addq-save:hover{background:var(--green-deep)}
+.addq-cancel{font-family:var(--sans);font-size:13px;padding:7px 14px;border:1.5px solid var(--line);border-radius:7px;background:#fff;color:var(--muted);cursor:pointer}
 .jump{text-decoration:underline;text-underline-offset:2px;cursor:pointer;color:inherit}
 .jump:hover{opacity:.7}
 55%{background:#FFF3CD}100%{background:transparent}}
@@ -468,7 +478,23 @@ flowchart LR
 <section id="codes">
   <div class="eyebrow">Unknowns</div>
   <h2><span class="zh">待答問題</span><span class="en">Open questions</span></h2>
-  <table><thead><tr><th style="width:56px"><span class="zh">代號</span><span class="en">Code</span></th><th><span class="zh">問題</span><span class="en">Question</span></th><th style="width:80px"><span class="zh">情境</span><span class="en">Rows</span></th></tr></thead><tbody id="qtbody"></tbody></table>
+  <table><thead><tr><th style="width:56px"><span class="zh">代號</span><span class="en">Code</span></th><th><span class="zh">問題</span><span class="en">Question</span></th><th style="width:80px"><span class="zh">情境</span><span class="en">Rows</span></th><th style="width:150px"><span class="zh">狀態</span><span class="en">Status</span></th></tr></thead><tbody id="qtbody"></tbody></table>
+  <div id="addq-area" style="margin-top:14px">
+    <button id="addq-btn" type="button" class="addq-toggle"><span class="zh">+ 新增問題</span><span class="en">+ Add question</span></button>
+    <div id="addq-form" style="display:none;margin-top:10px;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--panel)">
+      <div style="margin-bottom:8px"><input id="addq-text" type="text" placeholder="Question text / 問題文字" style="width:100%;box-sizing:border-box;padding:8px 10px;border:1.5px solid var(--line);border-radius:7px;font-size:13px;font-family:var(--sans)"></div>
+      <div style="margin-bottom:8px"><input id="addq-rows" type="text" placeholder="Rows (optional, e.g. #5) / 情境(可選)" style="width:100%;box-sizing:border-box;padding:8px 10px;border:1.5px solid var(--line);border-radius:7px;font-size:13px;font-family:var(--sans)"></div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <select id="addq-status" style="padding:7px 9px;border:1.5px solid var(--line);border-radius:7px;font-size:12px;font-family:var(--sans)">
+          <option value="open">Open</option><option value="pending">Pending</option>
+          <option value="waiting">Waiting for user reply</option><option value="close">Close</option>
+        </select>
+        <button id="addq-save" type="button" class="addq-save"><span class="zh">儲存</span><span class="en">Save</span></button>
+        <button id="addq-cancel" type="button" class="addq-cancel"><span class="zh">取消</span><span class="en">Cancel</span></button>
+        <span id="addq-msg" style="font-size:12px;color:var(--muted)"></span>
+      </div>
+    </div>
+  </div>
   
   <h3><span class="zh">假設中的通則(未入票)</span><span class="en">Working assumptions (not yet in the ticket)</span></h3>
   <ul style="font-size:13px;max-width:52em">
@@ -683,13 +709,82 @@ function renderNTable(){
    +'<td style="font-size:12px;color:var(--muted)">'+linkify(T2(n.rmk))+'</td>';
   tb.appendChild(tr);});
 }
+
+/* ===== Supabase (shared mini-DB for Open Questions) ===== */
+var SB_URL="https://numodlwfowfzjffpbcrw.supabase.co";
+var SB_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im51bW9kbHdmb3dmempmZnBiY3J3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM1ODgyMjksImV4cCI6MjA5OTE2NDIyOX0.oqXUMAAcjZgcdHx6IbeyCjrfg3ieB5U50njhr1khsLc";
+var SB_TABLE="SCB_Concurrent";
+function sbHeaders(extra){var hd={"apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY,"Content-Type":"application/json"};if(extra)for(var k in extra)hd[k]=extra[k];return hd;}
+// read all rows from supabase
+function sbFetchAll(){
+  return fetch(SB_URL+"/rest/v1/"+SB_TABLE+"?select=*&order=id.asc",{headers:sbHeaders()})
+    .then(function(r){return r.ok?r.json():[];}).catch(function(){return [];});
+}
+// insert a new question row
+function sbInsert(row){
+  return fetch(SB_URL+"/rest/v1/"+SB_TABLE,{method:"POST",headers:sbHeaders({"Prefer":"return=representation"}),body:JSON.stringify(row)})
+    .then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});
+}
+// update status by code (upsert-like: patch rows matching code)
+function sbUpdateStatus(code,status){
+  return fetch(SB_URL+"/rest/v1/"+SB_TABLE+"?code=eq."+encodeURIComponent(code),{method:"PATCH",headers:sbHeaders({"Prefer":"return=minimal"}),body:JSON.stringify({status:status})})
+    .then(function(r){return r.ok;}).catch(function(){return false;});
+}
+// holds supabase data: statuses{code:status} + extra questions[]
+function sbDelete(code){
+  return fetch(SB_URL+"/rest/v1/"+SB_TABLE+"?code=eq."+encodeURIComponent(code),{method:"DELETE",headers:sbHeaders({"Prefer":"return=minimal"})})
+    .then(function(r){return r.ok;}).catch(function(){return false;});
+}
+window._sbStatus={};window._sbExtra=[];
+
 function renderQTable(){
  var tb=document.getElementById("qtbody");if(!tb)return;tb.innerHTML="";
  Q.forEach(function(q){
   var tr=document.createElement("tr");tr.id='row-'+q.code;
   tr.innerHTML='<td><span class="tag tbc" style="cursor:help" title="'+q.tip.replace(/"/g,"&quot;")+'">'+q.code+'</span></td>'
-   +'<td>'+T2(q.q)+'</td><td style="font-family:var(--mono);font-size:12px">'+linkify(q.rows)+'</td>';
-  tb.appendChild(tr);});
+   +'<td>'+T2(q.q)+'</td><td style="font-family:var(--mono);font-size:12px">'+linkify(q.rows)+'</td>'
+   +'<td><select class="qstatus" data-code="'+q.code+'">'
+     +'<option value="open">Open</option>'
+     +'<option value="pending">Pending</option>'
+     +'<option value="waiting">Waiting for user reply</option>'
+     +'<option value="close">Close</option>'
+   +'</select></td>';
+  tb.appendChild(tr);
+  // restore saved status if any
+  var saved=(window._sbStatus&&window._sbStatus[q.code])||(window._qstatus&&window._qstatus[q.code])||"open";
+  var sel=tr.querySelector(".qstatus");sel.value=saved;
+  sel.addEventListener("change",function(){window._qstatus=window._qstatus||{};window._qstatus[this.getAttribute("data-code")]=this.value;
+    var code=this.getAttribute("data-code"),val=this.value;
+    // write to supabase; if the code has no row yet (Q1-Q6), insert a status-only row first
+    sbUpdateStatus(code,val).then(function(ok){ if(!ok){} });
+  });
+  });
+  // ALSO render extra (supabase-added) questions after the hardcoded Q1-Q6
+  (window._sbExtra||[]).forEach(function(q){
+    var tr=document.createElement("tr");tr.id="row-"+q.code;
+    tr.innerHTML='<td><span class="tag tbc">'+q.code+'</span></td>'
+     +'<td>'+(q.question||"")+'</td>'
+     +'<td style="font-family:var(--mono);font-size:12px">'+linkify(q.rows||"")+'</td>'
+     +'<td><div style="display:flex;align-items:center;gap:6px"><select class="qstatus" data-code="'+q.code+'" style="flex:1">'
+       +'<option value="open">Open</option><option value="pending">Pending</option>'
+       +'<option value="waiting">Waiting for user reply</option><option value="close">Close</option>'
+     +'</select><button class="qdel" data-code="'+q.code+'" title="Delete this question" type="button">&#128465;</button></div></td>';
+    tb.appendChild(tr);
+    var sel2=tr.querySelector(".qstatus");sel2.value=q.status||"open";
+    sel2.addEventListener("change",function(){sbUpdateStatus(q.code,this.value);});
+    var del=tr.querySelector(".qdel");
+    del.addEventListener("click",function(){
+      var code=this.getAttribute("data-code");
+      if(!confirm("Delete "+code+"? / 確定刪除 "+code+"?"))return;
+      var btn=this;btn.disabled=true;
+      sbDelete(code).then(function(ok){
+        if(ok){
+          window._sbExtra=(window._sbExtra||[]).filter(function(x){return x.code!==code;});
+          renderQTable&&renderQTable();
+        }else{btn.disabled=false;alert("Delete failed / 刪除失敗");}
+      });
+    });
+  });
 }
 function gateVerdict(){
  var yes=st.declare==="yes",n=detected(),all=sysAll();
@@ -734,6 +829,25 @@ SC.forEach(function(s,i){var bar=document.querySelector('.scbar[data-g="'+s.g+'"
 reset(2);log("初始:2 張系統卡,聲明「是」— 揀一個情境編號開始","Initial: 2 detected cards, declared Yes — pick a scenario number to start");
 
 try{renderNTable();renderQTable();linkifyStatusCells();treeCheck();}catch(e){console.warn("model render:",e);}
+// load shared data from Supabase, then re-render Q table
+(function(){
+  if(typeof sbFetchAll!=="function")return;
+  sbFetchAll().then(function(rows){
+    if(!rows||!rows.length){renderQTable&&renderQTable();return;}
+    function sbDelete(code){
+  return fetch(SB_URL+"/rest/v1/"+SB_TABLE+"?code=eq."+encodeURIComponent(code),{method:"DELETE",headers:sbHeaders({"Prefer":"return=minimal"})})
+    .then(function(r){return r.ok;}).catch(function(){return false;});
+}
+window._sbStatus={};window._sbExtra=[];
+    var hardcoded=(typeof Q!=="undefined")?Q.map(function(x){return x.code;}):[];
+    rows.forEach(function(r){
+      if(r.code&&r.status){window._sbStatus[r.code]=r.status;}
+      // extra = a question code not in the hardcoded Q1-Q6
+      if(r.code&&r.question&&hardcoded.indexOf(r.code)===-1){window._sbExtra.push(r);}
+    });
+    renderQTable&&renderQTable();
+  });
+})();
 </script>
 <script>
 document.getElementById("tv-d").onclick=function(){document.getElementById("tv").style.display="block";document.getElementById("tc").style.display="none";this.classList.add("on");document.getElementById("tv-c").classList.remove("on");};
@@ -858,5 +972,32 @@ document.getElementById("tv-c").onclick=function(){document.getElementById("tv")
   });
 })();
 </script>
+<script>
+(function(){
+  var btn=document.getElementById("addq-btn"),form=document.getElementById("addq-form");
+  if(!btn)return;
+  btn.addEventListener("click",function(){form.style.display=form.style.display==="none"?"block":"none";});
+  document.getElementById("addq-cancel").addEventListener("click",function(){form.style.display="none";});
+  document.getElementById("addq-save").addEventListener("click",function(){
+    var text=document.getElementById("addq-text").value.trim();
+    var rows=document.getElementById("addq-rows").value.trim();
+    var status=document.getElementById("addq-status").value;
+    var msg=document.getElementById("addq-msg");
+    if(!text){msg.textContent="Please enter question text / 請輸入問題";return;}
+    // next code = Q + (hardcoded count + existing extra count + 1)
+    var base=(typeof Q!=="undefined")?Q.length:6;
+    var next=base+(window._sbExtra?window._sbExtra.length:0)+1;
+    var code="Q"+next;
+    msg.textContent="Saving...";
+    sbInsert({code:code,question:text,rows:rows,status:status}).then(function(res){
+      if(res){
+        window._sbExtra=window._sbExtra||[];window._sbExtra.push({code:code,question:text,rows:rows,status:status});
+        renderQTable&&renderQTable();
+        document.getElementById("addq-text").value="";document.getElementById("addq-rows").value="";
+        form.style.display="none";msg.textContent="";
+      }else{msg.textContent="Save failed — check connection / 儲存失敗";}
+    });
+  });
+})();</script>
 </body>
 </html>
