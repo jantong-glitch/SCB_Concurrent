@@ -92,6 +92,12 @@ body[data-lang="en"] .zh{display:none}
 .side .grouphd{font-weight:700}
 .side .cur{background:#FDF2F4;border-left:3px solid var(--red);font-weight:800;color:var(--red);padding-left:11px}
 .side .subcur{background:#FDF2F4;border-left:3px solid var(--red);font-weight:800;color:var(--red);padding-left:25px}
+.side .tabnav{cursor:pointer}
+.side .tabnav:hover{background:#F3F6F5}
+.side .subcur.tabnav:hover{background:#FDF2F4}
+.simp-body{padding:22px}
+.simp-body .h1{font-size:17px;font-weight:800;color:var(--ink);margin-bottom:8px}
+.simp-note{font-size:12.5px;color:var(--mut);line-height:1.6}
 .side .off{color:#BFC9C5}
 
 .content{padding:18px 22px 26px;min-width:0}
@@ -521,15 +527,14 @@ html.locked body>*:not(#pwgate){filter:blur(6px);pointer-events:none;user-select
           <div class="it sub"><span>Payment ratio</span><span class="tick">&#10003;</span></div>
           <div class="it sub"><span>Life Proposed's Financial Info</span><span class="tick">&#10003;</span></div>
           <div class="it sub"><span>Evaluation, Recommendation &amp; Product Selection</span><span class="tick">&#10003;</span></div>
-          <div class="it subcur"><span>Concurrent Submission</span><span class="warn" id="tabwarn" hidden>&#9888;</span></div>
+          <div class="it subcur tabnav" data-tab="concurrent"><span>Concurrent Submission</span><span class="warn" id="tabwarn_concurrent">&#9888;</span><span class="tick" id="tick_concurrent" hidden>&#10003;</span></div>
           <div class="it"><span>Quotation</span><span class="tick">&#10003;</span></div>
           <div class="it grouphd"><span>Application Details</span></div>
-          <div class="it sub"><span>Basic Info</span><span class="warn">&#9888;</span></div>
-          <div class="it sub"><span>Extended Part</span><span class="warn">&#9888;</span></div>
+          <div class="it sub tabnav" data-tab="basic"><span>Basic Info</span><span class="warn" id="tabwarn_basic">&#9888;</span><span class="tick" id="tick_basic" hidden>&#10003;</span></div>
+          <div class="it sub tabnav" data-tab="extended"><span>Extended Part</span><span class="warn" id="tabwarn_extended">&#9888;</span><span class="tick" id="tick_extended" hidden>&#10003;</span></div>
           <div class="it sub"><span>Other Info</span><span class="tick">&#10003;</span></div>
           <div class="it"><span>Health Details</span></div>
           <div class="it sub"><span>Health Declaration Video</span><span class="tick">&#10003;</span></div>
-          <div class="it sub off"><span>Life Proposed's Insurance Details</span></div>
 
           <div class="side-pdf">
             <button class="genpdf" id="genpdf" disabled><span class="zh">預覽並簽署</span><span class="en">Preview &amp; Sign</span></button>
@@ -539,6 +544,7 @@ html.locked body>*:not(#pwgate){filter:blur(6px);pointer-events:none;user-select
 
         <!-- main content -->
         <main class="content">
+          <div id="concurrentPage">
           <div class="rechdr" id="rechdr">
             <div class="rh-ic">&#128196;</div>
             <div class="rh-txt">
@@ -695,7 +701,20 @@ html.locked body>*:not(#pwgate){filter:blur(6px);pointer-events:none;user-select
           </section>
           </div><!-- /#formbody -->
 
-          <div class="saverow"><button class="save" id="save"><span class="zh">下一步</span><span class="en">Next</span></button></div>
+          <div class="saverow"><button class="save" id="save"><span class="zh">下一頁</span><span class="en">Next Page</span></button></div>
+          </div><!-- /#concurrentPage -->
+
+          <div id="simplePage" hidden>
+            <div class="rechdr"><div class="rh-ic">&#128196;</div><div class="rh-txt">
+              <div class="rh-l1" id="simpTitle"></div>
+              <div class="rh-l2"><span class="zh">此為示範頁面。按「下一頁」以完成此部分。</span><span class="en">Demo page. Press Next Page to complete this section.</span></div>
+            </div></div>
+            <div class="simp-body">
+              <div class="h1" id="simpH1"></div>
+              <p class="simp-note"><span class="zh">(此原型只模擬多分頁流程。實際內容從略。)</span><span class="en">(This prototype only simulates the multi-tab flow; real content is omitted.)</span></p>
+            </div>
+            <div class="saverow"><button class="save" id="save2"><span class="zh">下一頁</span><span class="en">Next Page</span></button></div>
+          </div>
         </main>
       </div>
 
@@ -733,6 +752,7 @@ html.locked body>*:not(#pwgate){filter:blur(6px);pointer-events:none;user-select
         <li><span class="zh">部分選取時 AC11 與 AC7.2 兩項均為必填;需確認兩者為獨立控件,而非合併為一項。</span><span class="en">On partial selection both AC11 and AC7.2 are mandatory. Confirm they are two separate controls, not one merged question.</span></li>
         <li><span class="zh">在選 A 時所作的決定,於其後選 B 的申請會否保留?</span><span class="en">Do decisions made under option A carry over to the later application that picks option B?</span></li>
         <li><span class="zh">AC7.2 選項二:中文「有待刪除的未完成個案」與英文 Redundant case 意思不一致。</span><span class="en">AC7.2 option 2: the TC wording (incomplete case pending deletion) does not match the EN "Redundant case".</span></li>
+        <li><span class="zh">當前申請(本申請)的保單卡是否必須勾選才能通過?目前原型:必須勾選(E4)。剔選狀態為共用並會保留,新偵測到的卡(包括新的當前申請)預設不勾選,須由用戶勾選。待與 BA/AC 確認。</span><span class="en">Must the current application's own policy card be ticked to pass? Prototype today: yes (E4). Selection is shared and carried over; a newly-detected card (including a newly-entered current app) is left unticked and must be ticked by the user. To be confirmed with BA/AC.</span></li>
       </ol>
       <p style="margin-top:10px"><span class="zh">已解決(從清單移除):產生 PDF 那一關(Gate 2「預覽並簽署」+ PDF 鎖定/攔截/作廢);上限檢查已永遠顯示且選項 A 計入唯讀表保單;情況 4 已改為須剔選本申請卡(E4)。</span><span class="en">Resolved (removed above): the Gen-PDF gate (Gate 2 Preview &amp; Sign + PDF lock/intercept/void); the aggregate check now always shows and option A includes the read-only-table policies; situation 4 now requires ticking the current-policy card (E4).</span></p>
     </div>
@@ -766,7 +786,7 @@ var FREQ_LBL = {monthly:"Monthly", quarterly:"Quarterly", halfyearly:"Half-yearl
 var st = { opt:null, det:0, sel:{}, curRef:POLICIES[0].ref, a11:{}, a11oth:"", a72:{},
            aff:{nla:800000, ndi:100000, mog:5000, cdi:50, ca:50}, pm:{},
            manual:[], mseq:0,
-           saved:false, savedSig:"", pdf:{done:false, byApp:"", frozenRefs:[]}, lateRefs:[], editing:false, saveTried:false };
+           saved:false, savedSig:"", pdf:{done:false, byApp:"", frozenRefs:[]}, lateRefs:[], editing:false, saveTried:false, tab:"concurrent", tabs:{basic:false, extended:false} };
 
 function $(id){ return document.getElementById(id); }
 function money(n){ return n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2}); }
@@ -820,10 +840,18 @@ function roForm(){ return !st.editing || locked(); }
 // open/close the full-screen edit panel by relocating the live form node (keeps listeners)
 function openEdit(){
   if(locked()) return;
-  cardsList().forEach(function(p){ st.sel[p.ref] = true; });   // default: all policy cards selected in edit mode
+  // selection is shared & carried over — do NOT auto-select here.
+  // Previously-ticked policies stay ticked; a newly-detected card (incl. the current app) stays unticked
+  // until the user ticks it. (The current-app card still must be ticked to pass the gate — see E4 / open questions.)
   st.editing = true; render();
 }
 function closeEdit(){ st.editing = false; render(); }
+// OK = commit: if the form passes, the shared record is saved
+function commitEdit(){
+  st.editing = false;
+  if(gate().ok){ st.saved = true; st.savedSig = declSig(); }
+  render();
+}
 
 /* ---------- situation + gate ---------- */
 function situation(){
@@ -1119,32 +1147,40 @@ function renderTotal(){
 function renderVerdict(){
   var v = $("verdict");
   var eb = '<div class="eyebrow2">' + T("一併投保聲明結果","Concurrent declaration result") + '</div>';
-  // while editing, the on-screen changes are not committed yet — don't show saved/error until OK
-  if(st.editing && !locked()){
-    v.className = "verdict idle";
-    v.innerHTML = eb +
-      '<div class="status"><span class="ic">&#9998;</span>' + T("編輯中","Editing") + '</div>' +
-      '<div class="sit">' + T("改動需按「OK」落實後才會反映結果。","Changes take effect after you press OK.") + '</div>';
-    return;
-  }
   var g = gate();
   var names = {"1":T("情況 1 · A · 只有本案","Situation 1 · A · this case only"),
                "2":T("情況 2 · A · 偵測到多張","Situation 2 · A · multiple detected"),
                "3":T("情況 3 · B · 多張","Situation 3 · B · multiple"),
                "4":T("情況 4 · B · 只有本案","Situation 4 · B · this case only"),
                "null":T("尚未選擇聲明選項","No declaration option chosen yet")};
-  v.className = "verdict " + (g.ok ? "pass" : "block");
-  var icon = g.ok ? "&#10003;" : "&#9888;";
-  var head = g.ok ? T("成功儲存","Successfully saved") : T("發現錯誤","Error is found");
+  var sv = savedValid();
+  // committed via OK + still valid → Successfully saved
+  if(g.ok && sv){
+    v.className = "verdict pass";
+    v.innerHTML = eb +
+      '<div class="status"><span class="ic">&#10003;</span>' + T("成功儲存","Successfully saved") + '</div>' +
+      '<div class="sit">' + names[g.s === null ? "null" : g.s] + '</div>' +
+      '<div class="sit" style="margin-top:6px;color:var(--grn-sel)">' + T("沒有未填的必填項。","Nothing outstanding.") + '</div>';
+    return;
+  }
+  // valid but not committed (not yet pressed OK) → Ready to save
+  if(g.ok && !sv){
+    v.className = "verdict idle";
+    v.innerHTML = eb +
+      '<div class="status"><span class="ic">&#9654;</span>' + T("可以儲存","Ready to save") + '</div>' +
+      '<div class="sit">' + names[g.s === null ? "null" : g.s] + '</div>' +
+      '<div class="sit" style="margin-top:6px">' + T("已填妥,請按「編輯此記錄」內的「OK」以儲存。","Filled in — press OK (inside Edit this record) to save.") + '</div>';
+    return;
+  }
+  // errors in content → Error is found
+  v.className = "verdict block";
   var html = eb +
-    '<div class="status"><span class="ic">' + icon + '</span>' + head + '</div>' +
+    '<div class="status"><span class="ic">&#9888;</span>' + T("發現錯誤","Error is found") + '</div>' +
     '<div class="sit">' + names[g.s === null ? "null" : g.s] + '</div>';
-  if(!g.ok && g.need.length){
+  if(g.need.length){
     html += '<div class="sit" style="margin-top:9px">' + T("尚欠:","Outstanding:") + '</div><ul class="need">';
     g.need.forEach(function(n){ html += "<li>" + n + "</li>"; });
     html += "</ul>";
-  } else {
-    html += '<div class="sit" style="margin-top:6px;color:var(--grn-sel)">' + T("沒有未填的必填項。","Nothing outstanding.") + '</div>';
   }
   v.innerHTML = html;
 }
@@ -1202,30 +1238,64 @@ function render(){
 
   var fb = $("formbody");
   if(fb){
-    var host = $("edithost"), cont = document.querySelector(".content");
+    var host = $("edithost"), cont = $("concurrentPage");
     if(st.editing && !locked()){ if(fb.parentNode !== host) host.appendChild(fb); }
     else { if(fb.parentNode !== cont) cont.insertBefore(fb, $("save").parentNode); if(st.editing) st.editing = false; }
     fb.classList.toggle("rolock", roForm());
   }
   if($("editpanel")) $("editpanel").hidden = !st.editing;
 
-  // "Next" is navigation — never disabled; a failed gate shows an error alert instead of blocking the button
+  // "Next Page" is navigation — never disabled; a failed gate shows an error alert instead of blocking the button
   $("save").classList.remove("disabled");
   $("save").disabled = false;
   if($("addp")) $("addp").disabled = roForm();
 
-  // page-level "Error is found" alert: shown after a Next attempt while the gate is not satisfied
-  if(g.ok) st.saveTried = false;                 // errors resolved → clear
-  $("pgalert").hidden = !(st.saveTried && !g.ok);
-  if($("tabwarn")) $("tabwarn").hidden = g.ok;    // ⚠ on the Concurrent Submission tab when errors exist
+  var sv = savedValid();
+  var concurrentDone = g.ok && sv;                 // this tab passes only once saved via Next Page
+  var allTabsDone = concurrentDone && st.tabs.basic && st.tabs.extended;
 
-  // Gate 2 (Preview & Sign): enabled purely by a satisfied gate. Locked content is already valid, so App B can still sign.
-  var canPdf = g.ok;
+  // Gate 2 (Preview & Sign): every required tab must be complete (or the record already locked/signed)
+  var canPdf = lk || allTabsDone;
   $("genpdf").disabled = !canPdf;
   renderPdfStatus(canPdf);
+
+  // yellow ⚠ on the concurrent page: shown until the record is successfully saved
+  var showWarn = !st.editing && !lk && !sv;
+  $("pgalert").hidden = !showWarn;
+
+  renderTabs(concurrentDone);      // tab active state + ✓/⚠ per tab
+  renderPageSwitch();              // show concurrent vs simple demo page
+
   $("voidgrp").hidden = !lk;
 
   renderVerdict();
+}
+
+// tab nav: active highlight + tick/warn per tab
+function renderTabs(concurrentDone){
+  document.querySelectorAll(".tabnav").forEach(function(el){
+    el.classList.toggle("subcur", el.getAttribute("data-tab") === st.tab);
+  });
+  function mark(tab, done){
+    var t = $("tick_" + tab), w = $("tabwarn_" + tab);
+    if(t) t.hidden = !done;
+    if(w) w.hidden = done;
+  }
+  mark("concurrent", concurrentDone);
+  mark("basic", st.tabs.basic);
+  mark("extended", st.tabs.extended);
+}
+
+// switch iPad main content between the concurrent form and the simple demo pages
+function renderPageSwitch(){
+  var onConc = (st.tab === "concurrent");
+  $("concurrentPage").hidden = !onConc;
+  $("simplePage").hidden = onConc;
+  if(!onConc){
+    var name = (st.tab === "basic") ? "Basic Info" : "Extended Part";
+    $("simpTitle").textContent = name;
+    $("simpH1").textContent = name;
+  }
 }
 
 function renderPdfStatus(canPdf){
@@ -1273,7 +1343,8 @@ document.querySelectorAll("#ac72 .opt").forEach(function(l){
 document.querySelectorAll("#detseg button").forEach(function(b){
   b.addEventListener("click", function(){
     st.det = +b.getAttribute("data-det");
-    st.sel = {}; st.pdf = {done:false, byApp:"", frozenRefs:[]}; st.lateRefs = []; st.saved = false; st.saveTried = false;
+    st.pdf = {done:false, byApp:"", frozenRefs:[]}; st.lateRefs = []; st.saved = false; st.saveTried = false;
+    applyDefaults();   // set option per det + tick the first/original app card
     render();
     log("系統偵測改為 " + st.det + " 張其他保單。", "System now detects " + st.det + " other policies.");
   });
@@ -1320,16 +1391,36 @@ $("addp").addEventListener("click", function(){
       "Added a policy on screen — please select a payment mode.");
 });
 
+var TAB_ORDER = ["concurrent","basic","extended"];
+function goNextTab(){
+  var i = TAB_ORDER.indexOf(st.tab);
+  if(i > -1 && i < TAB_ORDER.length - 1){ st.tab = TAB_ORDER[i + 1]; }
+}
+
+// concurrent "Next Page" = navigation only (commit happens via Edit → OK)
 $("save").addEventListener("click", function(){
-  var g = gate();
-  if(g.ok){
-    st.saved = true; st.savedSig = declSig(); st.saveTried = false;
-    log("驗證通過 —— 前往下一頁。", "Validation passed — proceeding to the next page.");
-  } else {
-    st.saveTried = true;   // reveal the "Error is found" alert; the button itself is never disabled
-    log("本頁發現錯誤,不能前往下一頁。請按「編輯此記錄」修正。尚欠:" + g.need.join("、"),
-        "Errors found on this page — cannot proceed. Click \u201CEdit this record\u201D to fix. Outstanding: " + g.need.join(", "));
+  goNextTab();
+  render();
+  log("前往下一頁。", "Moved to the next page.");
+});
+
+// tab navigation between the 3 fillable sections
+document.querySelectorAll(".tabnav").forEach(function(el){
+  el.addEventListener("click", function(){
+    if(st.editing) return;                 // finish editing first
+    st.tab = el.getAttribute("data-tab");
+    render();
+    log("切換至分頁:" + el.getAttribute("data-tab") + "。", "Switched to tab: " + el.getAttribute("data-tab") + ".");
+  });
+});
+
+// simple demo page "Next Page" — marks that section complete, then advances
+$("save2").addEventListener("click", function(){
+  if(st.tab === "basic" || st.tab === "extended"){
+    st.tabs[st.tab] = true;
+    log("已完成「" + (st.tab === "basic" ? "Basic Info" : "Extended Part") + "」(示範)。", "Completed \u201C" + (st.tab === "basic" ? "Basic Info" : "Extended Part") + "\u201D (demo).");
   }
+  goNextTab();
   render();
 });
 
@@ -1344,8 +1435,8 @@ $("editrec").addEventListener("click", function(){
   log("已進入全螢幕編輯模式。完成後按「OK」返回顯示模式。", "Entered full-screen edit mode. Press OK when done to return to display.");
 });
 // OK is never disabled — always returns to display; any remaining error shows as the page alert there
-$("editok").addEventListener("click", function(){ closeEdit(); log("已完成編輯,返回顯示模式。", "Editing done — back to display."); });
-$("editback").addEventListener("click", function(){ closeEdit(); log("已離開編輯模式。", "Left edit mode."); });
+$("editok").addEventListener("click", function(){ commitEdit(); log(gate().ok ? "已按 OK — 記錄已儲存。" : "已按 OK,但仍有錯誤,未能儲存。", gate().ok ? "OK pressed — record saved." : "OK pressed, but errors remain — not saved."); });
+$("editback").addEventListener("click", function(){ closeEdit(); log("已離開編輯(未儲存)。", "Left edit (not saved)."); });
 
 $("genpdf").addEventListener("click", function(){
   if($("genpdf").disabled || !gate().ok) return;
@@ -1378,7 +1469,8 @@ $("rst").addEventListener("click", function(){
   st = { opt:null, det:0, sel:{}, curRef:POLICIES[0].ref, a11:{}, a11oth:"", a72:{},
          aff:{nla:800000, ndi:100000, mog:5000, cdi:50, ca:50}, pm:{},
          manual:[], mseq:0,
-         saved:false, savedSig:"", pdf:{done:false, byApp:"", frozenRefs:[]}, lateRefs:[], editing:false, saveTried:false };
+         saved:false, savedSig:"", pdf:{done:false, byApp:"", frozenRefs:[]}, lateRefs:[], editing:false, saveTried:false, tab:"concurrent", tabs:{basic:false, extended:false} };
+  applyDefaults();
   $("af_nla").value=800000; $("af_ndi").value=100000; $("af_mog").value=5000; $("af_cdi").value=50; $("af_ca").value=50;
   render();
   log("已重設。", "Reset.");
@@ -1398,6 +1490,12 @@ function setLang(l){
 $("lz").addEventListener("click", function(){ setLang("zh"); });
 $("le").addEventListener("click", function(){ setLang("en"); });
 
+function applyDefaults(){
+  st.opt = (st.det === 0) ? "A" : "B";           // option default per detected count (set once; not auto-changed afterwards)
+  st.sel = {}; st.sel[POLICIES[0].ref] = true;   // the first/original app card is ticked by default
+}
+
+applyDefaults();
 render();
 log("原型已載入 — 全部行為屬草稿,未經確認。", "Prototype loaded — every behaviour here is draft, not confirmed.");
 </script>
