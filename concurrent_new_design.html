@@ -44,6 +44,9 @@ body[data-lang="en"] .zh{display:none}
 .seg button{flex:1;min-width:56px;border:1.5px solid var(--line);background:#fff;color:var(--ink);
   border-radius:9px;padding:7px 6px;font-family:var(--sans);font-size:12.5px;font-weight:700;cursor:pointer}
 .seg button[aria-pressed="true"]{border-color:var(--grn);background:var(--grn);color:#fff}
+.adddet{width:100%;margin-top:8px;border:1.4px dashed var(--grn-sel);background:#fff;color:var(--grn);border-radius:8px;padding:7px;font-family:var(--sans);font-size:11.5px;font-weight:700;cursor:pointer}
+.adddet:hover{background:var(--grn-bg)}
+.adddet:disabled{border-color:var(--line);color:var(--mut2);cursor:not-allowed;background:#fff}
 .sitbtn{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .sitbtn button{border:1.5px solid var(--line);background:#fff;border-radius:9px;padding:8px 6px;
   font-family:var(--sans);font-size:12px;font-weight:700;color:var(--ink);cursor:pointer;text-align:left;line-height:1.3}
@@ -52,11 +55,11 @@ body[data-lang="en"] .zh{display:none}
 .rail .reset{width:100%;border:1.5px solid var(--line);background:#fff;border-radius:9px;padding:8px;
   font-family:var(--sans);font-size:12.5px;font-weight:700;cursor:pointer;color:var(--mut)}
 
-.verdict{border-radius:14px;padding:16px;border:2px solid var(--line);background:var(--panel)}
-.verdict .eyebrow2{font-size:10px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;color:var(--mut2);margin-bottom:9px}
-.verdict .status{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:800;line-height:1.15}
-.verdict .status .ic{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:16px;flex-shrink:0}
-.verdict .sit{margin-top:8px;font-size:12.5px;font-weight:700;color:var(--mut)}
+.verdict{border-radius:12px;padding:13px 14px;border:2px solid var(--line);background:var(--panel);margin-top:14px}
+.verdict .eyebrow2{font-size:9.5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--mut2);margin-bottom:7px}
+.verdict .status{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:800;line-height:1.15}
+.verdict .status .ic{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:14px;flex-shrink:0}
+.verdict .sit{margin-top:9px;font-size:11.5px;font-weight:600;color:var(--ink)}
 .verdict.pass{background:var(--grn-bg);border-color:var(--grn-sel)}
 .verdict.pass .status{color:var(--grn-dk)}
 .verdict.pass .ic{background:var(--grn-sel)}
@@ -65,8 +68,8 @@ body[data-lang="en"] .zh{display:none}
 .verdict.block .ic{background:var(--red-dk)}
 .verdict.idle .status{color:var(--mut)}
 .verdict.idle .ic{background:var(--mut2)}
-.verdict .need{margin:9px 0 0;padding-left:18px;font-size:12px}
-.verdict .need li{margin:3px 0}
+.verdict .need{margin:7px 0 0;padding-left:16px;font-size:11.5px;color:var(--ink)}
+.verdict .need li{margin:2px 0}
 
 /* ---------- ipad ---------- */
 .stage{display:flex;flex-direction:column;gap:14px;min-width:0}
@@ -129,6 +132,91 @@ table.ac18 tr:last-child td{border-bottom:0}
 .qgrid .k{font-size:10.5px;color:var(--mut2);margin-bottom:2px}
 .qgrid .v{font-size:12.5px;font-weight:700}
 
+/* entry-identity switcher (shared content) */
+.identbox{border:1px dashed var(--grn-sel);border-radius:10px;background:var(--grn-bg);padding:10px 13px;margin:6px 0 8px}
+.identlbl{font-size:10.5px;color:var(--grn);font-weight:800;text-transform:uppercase;letter-spacing:.4px;margin-bottom:7px}
+.identseg{display:flex;gap:7px;flex-wrap:wrap}
+.identseg button{border:1.4px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font-family:var(--sans);font-size:12px;font-weight:700;color:var(--ink);cursor:pointer}
+.identseg button:hover{border-color:var(--grn-sel)}
+.identseg button.on{background:var(--grn-sel);border-color:var(--grn-sel);color:#fff}
+.identseg .none{font-size:11.5px;color:var(--mut);font-style:italic}
+/* Gate 2 · Preview & Sign (inside iPad side nav) */
+.side-pdf{margin-top:16px;padding:12px 12px 4px;border-top:1px solid var(--line)}
+.genpdf{width:100%;border:0;background:var(--red);color:#fff;border-radius:999px;padding:10px;
+  font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:.3px;cursor:pointer}
+.genpdf:hover{background:var(--red-dk)}
+.genpdf:disabled{background:#C9CFCD;cursor:not-allowed}
+.pdfstat{margin-top:8px;font-size:10.5px;line-height:1.55;color:var(--mut)}
+.pdfstat .ok{color:var(--grn-sel);font-weight:800}
+.pdfstat .no{color:var(--mut2);font-weight:700}
+.pdfstat .lock{color:var(--red);font-weight:800}
+/* shared-record green header (top of concurrent content) */
+/* shared-record header — full-bleed, solid teal (matches real design) */
+.rechdr{display:flex;align-items:center;gap:12px;background:#3DB5AC;color:#fff;
+  padding:13px 22px;margin:-18px -22px 18px;border-bottom:0}
+.rechdr .rh-ic{font-size:20px;line-height:1;color:#fff;opacity:.95}
+.rechdr .rh-txt{flex:1;min-width:0}
+.rechdr .rh-l1{font-size:12.8px;font-weight:800;margin-bottom:3px;color:#fff}
+.rechdr .rh-l2{font-size:10.8px;line-height:1.5;color:#EAFBF8}
+.rechdr .rh-edit{flex-shrink:0;align-self:center;background:#fff;border:0;color:#0E7C72;border-radius:999px;padding:8px 15px;font-family:var(--sans);font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.rechdr .rh-edit::before{content:"\270E  ";}
+.rechdr .rh-edit:hover{background:#F2FBFA}
+.rechdr.locked{background:#3DB5AC}
+.rechdr.locked .rh-l2{color:#EAFBF8}
+.rechdr.locked .rh-edit{color:#0E7C72}
+@media(max-width:560px){.rechdr{flex-wrap:wrap}.rechdr .rh-edit{margin-left:29px}}
+/* page-level "Error is found" alert (under the record header) */
+.pgalert{display:flex;align-items:flex-start;gap:9px;background:#FBF3E0;color:#8A6100;border-bottom:1px solid #EBD9AE;
+  margin:-18px -22px 18px;padding:11px 22px;font-size:12px;font-weight:700;line-height:1.5}
+.pgalert[hidden]{display:none}
+.pgalert .pa-ic{color:#B26F14;font-size:14px;line-height:1.2;flex-shrink:0}
+/* read-only cue for the form (display mode or locked) */
+/* display (read-only) mode — clean & report-like, not a dimmed form */
+.rolock .choice,.rolock .opt,.rolock .pcard,.rolock .addbtn{cursor:default}
+.rolock .choice:hover,.rolock .opt:hover,.rolock .pcard:hover{border-color:#E5E9E7}
+.rolock .choice{background:#F4F6F5;border-color:#E5E9E7}
+.rolock .choice.on{background:#E8EDEB;border-color:#CBD5D0}
+.rolock .opt{background:transparent;border-color:#E5E9E7}
+.rolock .opt.on{background:transparent;border-color:#CBD5D0}
+.rolock .choice input,.rolock .opt input{accent-color:#6B7A75}
+.rolock .pcard{opacity:1;background:#FAFBFB;border-color:#E5E9E7}
+.rolock .pcard.on{border-color:#CBD5D0;background:#F1F4F3}
+.rolock .pcard .badge{color:#5C6B67}
+.rolock .pcard.on .badge .bx{background:#6B7A75;border-color:#6B7A75}
+.rolock .pcard.curcard{box-shadow:0 0 0 2px #F1F4F3,0 0 0 3px #9AB0AA}
+.rolock .mcard{opacity:1}
+.rolock .addbtn,.rolock .mdel{display:none}
+.rolock input:disabled,.rolock select:disabled{background:transparent;border:0;color:var(--ink);-webkit-text-fill-color:var(--ink);opacity:1;padding-left:0;font-weight:700}
+/* full-screen EDIT panel */
+.editpanel{position:absolute;inset:0;z-index:55;background:#fff;display:flex;flex-direction:column;border-radius:16px;overflow:hidden}
+.editpanel[hidden]{display:none}
+.editpanel .ep-top{display:flex;align-items:center;gap:12px;padding:11px 16px;border-bottom:1px solid var(--line);background:#fff}
+.editpanel .ep-back{color:var(--mut);cursor:pointer;font-size:12.5px;font-weight:600}
+.editpanel .ep-ttl{flex:1;text-align:center;font-size:13px;font-weight:800;color:var(--ink)}
+.editpanel .ep-info{display:flex;flex-direction:column;gap:0;background:#EAF6FA;color:#0E6E8C;font-size:11px;line-height:1.5;padding:10px 16px;border-bottom:1px solid #D3E9F1}
+.editpanel .ep-host{flex:1;overflow:auto;padding:16px 18px}
+.editpanel .ep-bot{border-top:1px solid var(--line);padding:12px 16px;background:#fff}
+.editpanel .ep-ok{width:100%;border:0;background:var(--red);color:#fff;border-radius:999px;padding:12px;
+  font-family:var(--sans);font-size:14px;font-weight:800;letter-spacing:.4px;cursor:pointer}
+.editpanel .ep-ok:hover{background:var(--red-dk)}
+/* Void PDF (dev rail) */
+.voidpdf{width:100%;border:1.5px solid var(--red);background:#fff;color:var(--red);border-radius:9px;padding:8px;
+  font-family:var(--sans);font-size:12px;font-weight:800;cursor:pointer}
+.voidpdf:hover{background:#FDF2F4}
+/* PDF-lock intercept modal — confined to the iPad screen only */
+.screen{position:relative}
+.lockmask{position:absolute;inset:0;z-index:60;background:rgba(11,59,52,.42);display:flex;align-items:flex-start;justify-content:center;padding:96px 18px 18px;border-radius:16px}
+.lockmask[hidden]{display:none}
+.lockdlg{background:#fff;border-radius:16px;padding:24px 24px 20px;width:340px;max-width:100%;box-shadow:0 18px 46px rgba(0,0,0,.28)}
+.lockdlg .lockttl{color:var(--red);font-size:15.5px;font-weight:800;margin-bottom:9px}
+.lockdlg .lockmsg{color:var(--ink);font-size:12.5px;line-height:1.6;margin-bottom:18px}
+.lockdlg .lockok{width:100%;border:0;background:var(--red);color:#fff;border-radius:999px;padding:11px;
+  font-family:var(--sans);font-size:13.5px;font-weight:800;letter-spacing:.4px;cursor:pointer}
+.lockdlg .lockok:hover{background:var(--red-dk)}
+/* current-policy badge on a card */
+.pcard .curtag{margin-left:8px;font-size:10px;font-weight:800;color:#fff;background:var(--grn-sel);border-radius:999px;padding:2px 9px;letter-spacing:.3px}
+.pcard.curcard{box-shadow:0 0 0 2px var(--grn-bg),0 0 0 3px var(--grn-sel)}
+
 /* policy cards */
 .pcard{border:1.5px solid var(--line);border-radius:11px;padding:12px 14px;margin-bottom:10px;cursor:pointer;background:#fff}
 .pcard.on{border-color:var(--grn-sel);background:var(--grn-bg)}
@@ -157,9 +245,9 @@ table.ac18 tr:last-child td{border-bottom:0}
 .reason.req{border-color:var(--amb-line);background:#FFFDF7}
 .reason .rq{font-size:12.5px;font-weight:800;margin-bottom:3px}
 .reason .tag{font-size:10.5px;font-weight:800;color:var(--amb);letter-spacing:.3px;margin-bottom:9px}
-.opt{display:block;border:1.4px solid var(--line);border-radius:9px;padding:9px 12px;margin-bottom:7px;cursor:pointer;font-size:12.3px;background:#fff}
+.opt{display:block;border:1.4px solid var(--line);border-radius:9px;padding:9px 12px;margin-bottom:7px;cursor:pointer;font-size:12.3px;background:transparent}
 .opt:hover{border-color:#BCCFC9}
-.opt.on{border-color:var(--grn-sel);background:var(--grn-bg)}
+.opt.on{border-color:var(--grn-sel);background:transparent}
 .opt input{margin:0 9px 0 0;accent-color:var(--grn-sel);vertical-align:middle}
 .opt .t{display:inline-block;vertical-align:middle;width:calc(100% - 28px);line-height:1.4}
 .othbox{width:100%;margin-top:2px;border:1.4px solid var(--line);border-radius:8px;padding:8px 10px;
@@ -265,6 +353,8 @@ table.ac18 tr:last-child td{border-bottom:0}
 .save{width:100%;background:var(--red);color:#fff;border:0;border-radius:999px;padding:12px;
   font-family:var(--sans);font-size:14px;font-weight:800;letter-spacing:.4px;cursor:pointer}
 .save:hover{background:var(--red-dk)}
+.save.disabled,.save:disabled{background:#C9CFCD;cursor:not-allowed}
+.save.disabled:hover,.save:disabled:hover{background:#C9CFCD}
 
 /* log */
 .log{background:var(--grn-dk);color:#CFE3DD;border-radius:12px;padding:11px 15px;font-family:var(--mono);font-size:11.5px;line-height:1.6}
@@ -324,6 +414,7 @@ html.locked body>*:not(#pwgate){filter:blur(6px);pointer-events:none;user-select
 })();
 </script>
 
+
 <div class="topbar">
   <h1><span class="zh">一併投保呈交 — 新設計</span><span class="en">Concurrent Submission — New Design</span></h1>
   <span class="draft">DRAFT · <span class="zh">全部待確認</span><span class="en">NOTHING CONFIRMED</span></span>
@@ -345,9 +436,11 @@ html.locked body>*:not(#pwgate){filter:blur(6px);pointer-events:none;user-select
       <label><span class="zh">系統偵測到其他保單</span><span class="en">Other policies detected</span></label>
       <div class="seg" id="detseg">
         <button data-det="0" aria-pressed="false">0</button>
+        <button data-det="1" aria-pressed="false">1</button>
         <button data-det="2" aria-pressed="true">2</button>
         <button data-det="3" aria-pressed="false">3</button>
       </div>
+      <button class="adddet" id="adddet">+1 <span class="zh">偵測保單(示範)</span><span class="en">detected policy (demo)</span></button>
     </div>
 
     <div class="grp">
@@ -361,10 +454,20 @@ html.locked body>*:not(#pwgate){filter:blur(6px);pointer-events:none;user-select
     </div>
 
     <div class="grp">
+      <label><span class="zh">以此申請身份進入(共用內容)</span><span class="en">Entering as (shared content)</span></label>
+      <div class="identseg" id="identseg"></div>
+    </div>
+
+    <div class="grp">
       <button class="reset" id="rst"><span class="zh">重設</span><span class="en">Reset</span></button>
     </div>
 
     <div class="verdict" id="verdict"></div>
+
+    <div class="grp voidgrp" id="voidgrp" hidden>
+      <label><span class="zh">記錄鎖定(已出 PDF)</span><span class="en">Record locked (PDF generated)</span></label>
+      <button class="voidpdf" id="voidpdf"><span class="zh">作廢 PDF(解鎖)</span><span class="en">Void PDF (unlock)</span></button>
+    </div>
 
     <!-- ===== Aggregate max check (dev control panel) ===== -->
     <div class="railpanel" id="ac19">
@@ -405,25 +508,46 @@ html.locked body>*:not(#pwgate){filter:blur(6px);pointer-events:none;user-select
         <nav class="side">
           <div class="it"><span>Life Proposed / Proposer</span><span class="tick">&#10003;</span></div>
           <div class="it"><span>Specific Product Needs</span><span class="tick">&#10003;</span></div>
-          <div class="it"><span>Financial Needs Analysis</span><span class="tick">&#10003;</span></div>
+          <div class="it grouphd"><span>Financial Needs Analysis</span></div>
           <div class="it sub"><span>Financial Need Analysis</span><span class="tick">&#10003;</span></div>
           <div class="it sub"><span>Proposer's Financial Info</span><span class="tick">&#10003;</span></div>
           <div class="it sub"><span>Payment ratio</span><span class="tick">&#10003;</span></div>
           <div class="it sub"><span>Life Proposed's Financial Info</span><span class="tick">&#10003;</span></div>
           <div class="it sub"><span>Evaluation, Recommendation &amp; Product Selection</span><span class="tick">&#10003;</span></div>
+          <div class="it subcur"><span>Concurrent Submission</span><span class="warn" id="tabwarn" hidden>&#9888;</span></div>
           <div class="it"><span>Quotation</span><span class="tick">&#10003;</span></div>
-          <div class="it cur grouphd"><span>Application Details</span></div>
-          <div class="it subcur"><span>Concurrent Submission</span></div>
+          <div class="it grouphd"><span>Application Details</span></div>
           <div class="it sub"><span>Basic Info</span><span class="warn">&#9888;</span></div>
           <div class="it sub"><span>Extended Part</span><span class="warn">&#9888;</span></div>
           <div class="it sub"><span>Other Info</span><span class="tick">&#10003;</span></div>
           <div class="it"><span>Health Details</span></div>
           <div class="it sub"><span>Health Declaration Video</span><span class="tick">&#10003;</span></div>
           <div class="it sub off"><span>Life Proposed's Insurance Details</span></div>
+
+          <div class="side-pdf">
+            <button class="genpdf" id="genpdf" disabled><span class="zh">預覽並簽署</span><span class="en">Preview &amp; Sign</span></button>
+            <div class="pdfstat" id="pdfstat"></div>
+          </div>
         </nav>
 
         <!-- main content -->
         <main class="content">
+          <div class="rechdr" id="rechdr">
+            <div class="rh-ic">&#128196;</div>
+            <div class="rh-txt">
+              <div class="rh-l1" id="rh-l1"></div>
+              <div class="rh-l2" id="rh-l2"><span class="zh">請確保受保人資料為受保人最新的概況。如資料有變,請重新進行相關作答。</span><span class="en">Please ensure the insured's data reflects the latest situation. If anything changed, redo the relevant answers.</span></div>
+            </div>
+            <button class="rh-edit" id="editrec"><span class="zh">編輯此記錄</span><span class="en">Edit this record</span></button>
+          </div>
+
+          <div class="pgalert" id="pgalert" hidden>
+            <span class="pa-ic">&#9888;</span>
+            <span class="zh">發現錯誤,請按「編輯此記錄」修正已輸入的資料。</span>
+            <span class="en">Error is found, please click "Edit this record" to correct inputted data.</span>
+          </div>
+
+          <div id="formbody">
           <div class="h1">Concurrent Submission</div>
           <div class="h2"><span class="zh">一併投保呈交的客戶聲明</span><span class="en">Customer Declaration on Concurrent Submission</span></div>
 
@@ -452,16 +576,6 @@ html.locked body>*:not(#pwgate){filter:blur(6px);pointer-events:none;user-select
             <span class="zh">一併投保呈交的定義:客戶於同日向同一銷售人員購買多份保單(不論產品相同或不同)。一併投保呈交只計算基本計劃。</span>
             <span class="en">Concurrent Submission is defined as: when a customer purchases multiple policies on the same day from the same sales staff (regardless of same or different products). Concurrent submission only counts for basic plan.</span>
           </p>
-
-          <!-- ===== Current policy quotation: always visible ===== -->
-          <div class="qbox" id="quotebox">
-            <div class="qt"><span class="zh">本保單報價</span><span class="en">Current Policy Quotation</span></div>
-            <div class="qgrid">
-              <div><div class="k">Product</div><div class="v">ENCASH — Prudential Enhanced Cash Hospital Income Savings Insurance</div></div>
-              <div><div class="k">Pay Term</div><div class="v">5 / @100</div></div>
-              <div><div class="k">Sum Assured</div><div class="v">USD 100,000.00</div></div>
-            </div>
-          </div>
 
           <!-- ===== Option A + detected: AC18 read-only table ===== -->
           <section id="secA" hidden>
@@ -572,9 +686,33 @@ html.locked body>*:not(#pwgate){filter:blur(6px);pointer-events:none;user-select
             </div>
             <p class="mockfoot">Mock up for discussion only - sample premium and exchange rate values used for preview.</p>
           </section>
+          </div><!-- /#formbody -->
 
-          <div class="saverow"><button class="save" id="save">SAVE</button></div>
+          <div class="saverow"><button class="save" id="save"><span class="zh">下一步</span><span class="en">Next</span></button></div>
         </main>
+      </div>
+
+      <!-- ===== Full-screen EDIT panel (covers the iPad; hosts the editable form) ===== -->
+      <div class="editpanel" id="editpanel" hidden>
+        <div class="ep-top">
+          <span class="ep-back" id="editback">&lsaquo; <span class="zh">返回</span><span class="en">Back</span></span>
+          <span class="ep-ttl"><span class="zh">編輯此記錄 — 一併投保呈交</span><span class="en">Edit this record — Concurrent Submission</span></span>
+        </div>
+        <div class="ep-info">
+          <span class="zh">你正在編輯共用記錄。此頁的更改會反映於所有相關申請。完成後按底部「OK」返回。</span>
+          <span class="en">You are editing the shared record. Changes here apply to all related applications. Press OK at the bottom when done.</span>
+        </div>
+        <div class="ep-host" id="edithost"></div>
+        <div class="ep-bot"><button class="ep-ok" id="editok">OK</button></div>
+      </div>
+
+      <!-- ===== PDF-lock intercept modal (confined to iPad screen) ===== -->
+      <div class="lockmask" id="lockmask" hidden>
+        <div class="lockdlg" role="alertdialog" aria-modal="true">
+          <div class="lockttl"><span class="zh">重要提示</span><span class="en">Important</span></div>
+          <div class="lockmsg" id="lockmsg"></div>
+          <button class="lockok" id="lockok"><span class="zh">確認</span><span class="en">OK</span></button>
+        </div>
       </div>
     </div></div>
 
@@ -586,12 +724,10 @@ html.locked body>*:not(#pwgate){filter:blur(6px);pointer-events:none;user-select
       <ol>
         <li><span class="zh">全部選取時,AC11 問題應完全隱藏,還是顯示但非必填?此處採用「隱藏」。</span><span class="en">When all policies are selected, is the AC11 question hidden or shown as non-mandatory? This prototype hides it.</span></li>
         <li><span class="zh">部分選取時 AC11 與 AC7.2 兩項均為必填;需確認兩者為獨立控件,而非合併為一項。</span><span class="en">On partial selection both AC11 and AC7.2 are mandatory. Confirm they are two separate controls, not one merged question.</span></li>
-        <li><span class="zh">情況 4(選 B 但只有本案)假設無須填寫任何內容,直接通過。</span><span class="en">Situation 4 (option B with only this case) is assumed to pass with nothing to fill.</span></li>
         <li><span class="zh">在選 A 時所作的決定,於其後選 B 的申請會否保留?</span><span class="en">Do decisions made under option A carry over to the later application that picks option B?</span></li>
         <li><span class="zh">AC7.2 選項二:中文「有待刪除的未完成個案」與英文 Redundant case 意思不一致。</span><span class="en">AC7.2 option 2: the TC wording (incomplete case pending deletion) does not match the EN "Redundant case".</span></li>
-        <li><span class="zh">AC17 只在產生 PDF 一刻檢查;本原型只涵蓋 SAVE 這一關,未包含產生 PDF 那一關。</span><span class="en">AC17 runs at Gen-PDF. This prototype only covers the SAVE gate, not the Gen-PDF gate.</span></li>
-        <li><span class="zh">AC19 目前只在選項 B 顯示;AC 並未說明是否只限某一選項。若選項 A 亦須顯示,計算應否包括唯讀表內的保單?</span><span class="en">AC19 currently shows only under option B. The AC does not say it is limited to one option. If it must also show under option A, should the total include the policies in the read-only table?</span></li>
       </ol>
+      <p style="margin-top:10px"><span class="zh">已解決(從清單移除):產生 PDF 那一關(Gate 2「預覽並簽署」+ PDF 鎖定/攔截/作廢);上限檢查已永遠顯示且選項 A 計入唯讀表保單;情況 4 已改為須剔選本申請卡(E4)。</span><span class="en">Resolved (removed above): the Gen-PDF gate (Gate 2 Preview &amp; Sign + PDF lock/intercept/void); the aggregate check now always shows and option A includes the read-only-table policies; situation 4 now requires ticking the current-policy card (E4).</span></p>
     </div>
 
   </div>
@@ -608,7 +744,9 @@ var POLICIES = [
   {ref:"APP-20260717-002", po:"CHAN Tai Man", lp:"CHAN Siu Ming", prod:"ENCASH Saving Plan",
    cur:"USD", prem:7825.82, term:"5 / @100", si:"17/07/2026 11:34", type:"regular", freq:"yearly", pt:5},
   {ref:"APP-20260717-003", po:"CHAN Tai Man", lp:"CHAN Siu Ming", prod:"PRULife Protector",
-   cur:"HKD", prem:12960.00, term:"10 Years", si:"17/07/2026 12:05", type:"regular", freq:"yearly", pt:10}
+   cur:"HKD", prem:12960.00, term:"10 Years", si:"17/07/2026 12:05", type:"regular", freq:"yearly", pt:10},
+  {ref:"APP-20260717-004", po:"CHAN Tai Man", lp:"CHAN Siu Ming", prod:"PRUSaver Plus",
+   cur:"HKD", prem:9600.00, term:"15 Years", si:"17/07/2026 13:20", type:"regular", freq:"yearly", pt:12}
 ];
 
 /* current application (this case) — its own premium counts in the aggregate */
@@ -618,16 +756,67 @@ var CURRENT = {ref:"__cur__", prod:"ENCASH — Prudential Enhanced Cash Hospital
 var FREQ_MONTHS = {monthly:1, quarterly:3, halfyearly:6, yearly:12};
 var FREQ_LBL = {monthly:"Monthly", quarterly:"Quarterly", halfyearly:"Half-yearly", yearly:"Yearly"};
 
-var st = { opt:null, det:2, sel:{}, a11:{}, a11oth:"", a72:{},
+var st = { opt:null, det:0, sel:{}, curRef:POLICIES[0].ref, a11:{}, a11oth:"", a72:{},
            aff:{nla:800000, ndi:100000, mog:5000, cdi:50, ca:50}, pm:{},
-           manual:[], mseq:0 };
+           manual:[], mseq:0,
+           saved:false, savedSig:"", pdf:{done:false, byApp:"", frozenRefs:[]}, lateRefs:[], editing:false, saveTried:false };
 
 function $(id){ return document.getElementById(id); }
 function money(n){ return n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2}); }
 function hkd(p){ return p.prem * (FX_MAP[p.cur] || 1); }
-function live(){ return POLICIES.slice(0, st.det); }
+// "Other policies detected" = st.det; the batch is the current application + those others (det + 1 total)
+function live(){ return POLICIES.slice(0, Math.min(st.det + 1, POLICIES.length)); }
 function isZh(){ return document.body.dataset.lang === "zh"; }
 function T(z,e){ return isZh() ? z : e; }
+
+/* ---------- shared-content helpers ---------- */
+var APP_LBL = ["App A","App B","App C","App D","App E"];
+function curPolicy(){ return POLICIES.filter(function(p){ return p.ref === st.curRef; })[0] || null; }
+// a "late" identity was added AFTER a PDF was generated — it forms its own new declaration
+function isLate(){ return st.lateRefs.indexOf(st.curRef) >= 0; }
+// card list = detected same-day policies + the current application's own policy (always shown).
+// A late-added identity is its own separate declaration → its list shows only itself.
+function cardsList(){
+  if(isLate()){ var c = curPolicy(); return c ? [c] : []; }
+  // once locked, the frozen batch shows exactly the policies captured at PDF time (excludes any late additions)
+  if(locked() && st.pdf.frozenRefs.length){
+    return st.pdf.frozenRefs.map(function(r){ return POLICIES.filter(function(p){ return p.ref === r; })[0]; }).filter(Boolean);
+  }
+  var arr = live().slice(), cp = curPolicy();
+  if(cp && !arr.some(function(p){ return p.ref === cp.ref; })) arr.unshift(cp);
+  return arr;
+}
+function curInLive(){ return cardsList().some(function(p){ return p.ref === st.curRef; }); }
+// O1: aggregate/Total count only TICKED cards. Option A read-only table = all declared (treated as ticked).
+function selectedList(){
+  if(st.opt === "A") return live().slice();               // read-only AC18 = all declared
+  return cardsList().filter(function(p){ return st.sel[p.ref]; });
+}
+// D1: a manual card is incomplete if no mode chosen, or amount not filled
+function mIncomplete(m){ return !m.mode || !(m.amt > 0); }
+function anyManualIncomplete(){ return st.manual.some(mIncomplete); }
+
+// declaration signature — changes whenever the shared declaration content changes.
+// Used for Gate 2: a SAVE only stays valid while the signature is unchanged (final-state model).
+function declSig(){
+  var sel = Object.keys(st.sel).filter(function(k){ return st.sel[k]; }).sort().join(",");
+  var man = st.manual.map(function(m){ return (m.mode||"-")+":"+(m.amt||0)+":"+(m.freq||"-")+":"+(m.pt||0); }).join("|");
+  return [st.opt, st.det, sel,
+          (st.a11.needs?1:0), (st.a11.other?1:0), st.a11oth.trim(),
+          (st.a72.pending?1:0), (st.a72.redundant?1:0), man].join("~");
+}
+function savedValid(){ return st.saved && st.savedSig === declSig(); }
+// record is locked once a PDF has been generated — but a late-added identity is a new, unlocked declaration
+function locked(){ return !!st.pdf.done && !isLate(); }
+// the form is read-only unless we are inside the edit panel and not locked
+function roForm(){ return !st.editing || locked(); }
+// open/close the full-screen edit panel by relocating the live form node (keeps listeners)
+function openEdit(){
+  if(locked()) return;
+  cardsList().forEach(function(p){ st.sel[p.ref] = true; });   // default: all policy cards selected in edit mode
+  st.editing = true; render();
+}
+function closeEdit(){ st.editing = false; render(); }
 
 /* ---------- situation + gate ---------- */
 function situation(){
@@ -635,8 +824,8 @@ function situation(){
   if(st.opt === "A") return st.det === 0 ? "1" : "2";
   return st.det === 0 ? "4" : "3";
 }
-function selCount(){ return live().filter(function(p){ return st.sel[p.ref]; }).length; }
-function allSelected(){ return st.det > 0 && selCount() === st.det; }
+function selCount(){ return cardsList().filter(function(p){ return st.sel[p.ref]; }).length; }
+function allSelected(){ var l = cardsList(); return l.length > 0 && l.every(function(p){ return st.sel[p.ref]; }); }
 function a11Filled(){
   var any = st.a11.needs || st.a11.other;
   if(!any) return false;
@@ -648,14 +837,18 @@ function a72Filled(){ return !!(st.a72.pending || st.a72.redundant); }
 function gate(){
   var s = situation(), need = [];
   if(s === null) return {s:null, ok:false, need:[T("請先選擇一個選項","Choose an option first")]};
-  if(s === "1")  return {s:s, ok:true, need:[]};
-  if(s === "4") return {s:s, ok:true, need:[]};
+  // D1: any incomplete manual card blocks save
+  if(anyManualIncomplete()) need.push(T("完成或刪除未填妥的手動保單","Complete or remove the unfinished manual policy"));
+  // E4: the current-policy card must be ticked to proceed (option B selectable cards)
+  if(st.opt === "B" && curInLive() && !st.sel[st.curRef]) need.push(T("必須勾選「本申請保單 Current policy」","Tick the Current policy card"));
+  if(s === "1")  return {s:s, ok:need.length === 0, need:need};
+  if(s === "4") return {s:s, ok:need.length === 0, need:need};
   if(s === "2"){
     if(!a72Filled()) need.push(T("AC7.2 取消選取交易的原因","AC7.2 de-select reason"));
     return {s:s, ok:need.length === 0, need:need};
   }
   /* s === "3" (covers all-selected case too) */
-  if(allSelected()) return {s:s, ok:true, need:[]};
+  if(allSelected()) return {s:s, ok:need.length === 0, need:need};
   if(selCount() === 0) need.push(T("最少選取一張保單","Select at least one policy"));
   if(!a11Filled()) need.push(T("AC11 一併投保原因","AC11 generic reason"));
   if(!a72Filled()) need.push(T("AC7.2 取消選取交易的原因","AC7.2 de-select reason"));
@@ -676,13 +869,15 @@ function renderAc18(){
 
 function renderCards(){
   var wrap = $("cards"); wrap.innerHTML = "";
-  live().forEach(function(p){
+  cardsList().forEach(function(p){
     var on = !!st.sel[p.ref];
+    var isCur = (p.ref === st.curRef);
     var d = document.createElement("div");
-    d.className = "pcard" + (on ? " on" : "");
+    d.className = "pcard" + (on ? " on" : "") + (isCur ? " curcard" : "");
     d.innerHTML =
       '<div class="row1"><span class="badge"><span class="bx">&#10003;</span>' +
         '<span>' + (on ? T("已選取","Selected") : T("未選取","Not selected")) + '</span></span>' +
+        (isCur ? '<span class="curtag">' + T("本申請保單 Current policy","Current policy") + '</span>' : '') +
         '<span class="ref">Ref No ' + p.ref + '</span></div>' +
       '<div class="k">Life Proposed / Proposer</div>' +
       '<div class="nm">' + p.lp + " / " + p.po + '</div>' +
@@ -693,14 +888,16 @@ function renderCards(){
         '<span><span class="lbl">Pay Term</span><b>' + p.term + '</b></span>' +
         '<span><span class="lbl">SI Generated</span><b>' + p.si + '</b></span>' +
       '</div>';
-    d.addEventListener("click", function(){ st.sel[p.ref] = !st.sel[p.ref]; render(); });
+    d.addEventListener("click", function(){ if(roForm()) return; st.sel[p.ref] = !st.sel[p.ref]; render(); });
     wrap.appendChild(d);
   });
 }
 
 function renderManualCards(){
   var wrap = $("manualcards"); if(!wrap) return; wrap.innerHTML = "";
-  st.manual.forEach(function(m, idx){
+  // display (read-only) shows completed policies only; unfinished cards appear only in edit mode
+  var list = roForm() ? st.manual.filter(function(m){ return !mIncomplete(m); }) : st.manual;
+  list.forEach(function(m, idx){
     var d = document.createElement("div");
     d.className = "mcard";
     var isMon = m.mode === "monthly", isSin = m.mode === "single";
@@ -732,21 +929,76 @@ function renderManualCards(){
   wrap.querySelectorAll('.mdel').forEach(function(b){ b.addEventListener("click", function(e){ e.stopPropagation();
     var id = +this.dataset.mid; st.manual = st.manual.filter(function(x){ return x.id !== id; }); render(); }); });
   wrap.querySelectorAll('input[type="radio"][data-mid]').forEach(function(r){ r.addEventListener("change", function(){
-    var m = mById(+this.dataset.mid); if(m){ m.mode = this.value; if(m.mode==="monthly" && !m.pt) m.pt = 10; } render(); }); });
+    var m = mById(+this.dataset.mid); if(m){ if(m.mode !== this.value) m.amt = 0; m.mode = this.value; if(m.mode==="monthly" && !m.pt) m.pt = 10; } render(); }); });
   wrap.querySelectorAll('.m-freq').forEach(function(s){ s.addEventListener("change", function(){
     var m = mById(+this.dataset.mid); if(m) m.freq = this.value; renderAfford(); renderTotal(); }); });
   wrap.querySelectorAll('.m-amt').forEach(function(i){ i.addEventListener("input", function(){
     var m = mById(+this.dataset.mid); if(m) m.amt = parseFloat(this.value) || 0; renderAfford(); renderTotal(); }); });
   wrap.querySelectorAll('.m-pt').forEach(function(i){ i.addEventListener("input", function(){
     var m = mById(+this.dataset.mid); if(m) m.pt = parseFloat(this.value) || 0; renderAfford(); renderTotal(); }); });
+  if(roForm()){ wrap.querySelectorAll("input,select,button").forEach(function(e){ e.disabled = true; }); }
 }
 function mById(id){ return st.manual.filter(function(x){ return x.id === id; })[0]; }
-
 function renderBanner(){
   var n = selCount();
   $("countBanner").innerHTML = "<b>" + n + " " + T("份申請已選取。","applications selected.") + "</b> " +
     T("請確保已選取所有適用的一併投保申請,以免需要重做。",
       "Please ensure all applicable concurrent applications are selected to avoid rework.");
+}
+
+// entry-identity switcher (App A/B/C) — shared tick state, label follows identity
+function renderIdentity(){
+  var box = $("identseg"); if(!box) return; box.innerHTML = "";
+  var ps = live();
+  if(ps.length === 0){
+    box.innerHTML = '<span class="none">' + T("只有本申請,沒有偵測到的同日保單","This application only — no detected same-day policy") + '</span>';
+    return;
+  }
+  ps.forEach(function(p, i){
+    var b = document.createElement("button");
+    var appl = APP_LBL[i] || ("App " + (i + 1));
+    b.textContent = appl;
+    b.className = (p.ref === st.curRef) ? "on" : "";
+    b.setAttribute("data-ref", p.ref);
+    box.appendChild(b);
+  });
+}
+// green shared-record header — text follows the entry identity; switches to a locked state after PDF
+function renderHeader(){
+  var el = $("rh-l1"); if(!el) return; var p = curPolicy(); var hd = $("rechdr"); var l2 = $("rh-l2");
+  if(locked()){
+    hd.classList.add("locked");
+    el.textContent = T("記錄已鎖定 — 已由 " + st.pdf.byApp + " 產生 PDF",
+                       "Record locked — PDF generated by " + st.pdf.byApp);
+    l2.textContent = T("如需修改,請先作廢該 PDF。","To make changes, void the PDF first.");
+  } else if(isLate()){
+    hd.classList.remove("locked");
+    var lname = p ? p.prod : T("本申請","this application");
+    el.textContent = T("新一份聲明「" + lname + "」(未鎖) — 於 PDF 產生後才加入",
+                       "New separate declaration for \u201C" + lname + "\u201D (unlocked) — added after the PDF");
+    l2.textContent = T("此申請不屬於已鎖定的一併投保組合,清單只包含它自己,可獨立作答。",
+                       "This application is not part of the locked concurrent batch; the list shows only itself and can be completed independently.");
+  } else {
+    hd.classList.remove("locked");
+    var name = (p && curInLive()) ? p.prod : T("本申請","this application");
+    el.textContent = T("已載入「" + name + "」之一併投保聲明(共用內容)",
+                       "Loaded the concurrent declaration for \u201C" + name + "\u201D (shared content)");
+    l2.textContent = T("請確保受保人資料為受保人最新的概況。如資料有變,請重新進行相關作答。",
+                       "Please ensure the insured's data reflects the latest situation. If anything changed, redo the relevant answers.");
+  }
+}
+// current policy quotation follows the entry identity
+function renderQuote(){
+  var g = $("quotegrid"); if(!g) return; var p = curPolicy();
+  if(!p || !curInLive()){
+    g.innerHTML = '<div><div class="k">' + T("本申請","This application") + '</div><div class="v">' +
+      T("(只有本申請,沒有偵測到的同日保單)","(only this application — no detected same-day policy)") + '</div></div>';
+    return;
+  }
+  g.innerHTML =
+    '<div><div class="k">Product</div><div class="v">' + p.prod + '</div></div>' +
+    '<div><div class="k">Pay Term</div><div class="v">' + p.term + '</div></div>' +
+    '<div><div class="k">Premium</div><div class="v">' + p.cur + " " + money(p.prem) + '</div></div>';
 }
 
 function num(id){ return parseFloat($(id).value) || 0; }
@@ -756,12 +1008,10 @@ function pmOf(p){ var o = st.pm[p.ref] || {}; return {
   pt:   o.pt   != null ? o.pt   : p.pt }; }
 function setPM(ref,k,v){ if(!st.pm[ref]) st.pm[ref] = {}; st.pm[ref][k] = v; }
 
-// aggregate list = current application + selected detected policies
+// aggregate list = SELECTED cards only (O1) + completed manual policies
 function aggList(){
-  var arr = [CURRENT];
-  live().forEach(function(p){ if(st.sel[p.ref]) arr.push(p); });
-  var out = arr.map(function(p){ var m = pmOf(p); return {
-    ref:p.ref, isCur:p.ref === "__cur__", prod:p.prod, amt:hkd(p),
+  var out = selectedList().map(function(p){ var m = pmOf(p); return {
+    ref:p.ref, isCur:p.ref === st.curRef, prod:p.prod, amt:hkd(p),
     type:m.type, freq:m.freq, pt:m.pt }; });
   // append manual policies (added on-screen via + Add Policy) once a mode is chosen
   st.manual.forEach(function(m){
@@ -789,7 +1039,7 @@ function renderAfford(){
                    : (T("單筆","one-off") + " HKD " + money(x.amt));
     var row = document.createElement("div"); row.className = "aggrow";
     row.innerHTML =
-      '<span class="anm">' + (x.isCur ? '<span class="cur-b">' + T("本申請保單","Current policy") + "</span>" : shortProd(x.prod)) + "</span>" +
+      '<span class="anm">' + (x.isCur ? ('<span class="cur-b">' + T("Current policy","Current policy") + "</span>" + shortProd(x.prod)) : shortProd(x.prod)) + "</span>" +
       "<label>" + T("類型","Type") + ' <select class="pm-type" data-ref="' + x.ref + '">' +
         '<option value="single"' + (!reg?" selected":"") + ">" + T("單筆","Single") + "</option>" +
         '<option value="regular"' + (reg?" selected":"") + ">" + T("供款","Regular") + "</option></select></label>" +
@@ -860,25 +1110,28 @@ function renderTotal(){
 }
 
 function renderVerdict(){
-  var g = gate(), v = $("verdict");
-  var eb = '<div class="eyebrow2">' + T("最終結果","Final result") + '</div>';
-  if(g.s === null){
+  var v = $("verdict");
+  var eb = '<div class="eyebrow2">' + T("一併投保聲明結果","Concurrent declaration result") + '</div>';
+  // while editing, the on-screen changes are not committed yet — don't show saved/error until OK
+  if(st.editing && !locked()){
     v.className = "verdict idle";
     v.innerHTML = eb +
-      '<div class="status"><span class="ic">&#9675;</span>' + T("未開始","Not started") + '</div>' +
-      '<div class="sit">' + T("請在畫面選擇一個聲明選項。","Pick a declaration option on the screen.") + '</div>';
+      '<div class="status"><span class="ic">&#9998;</span>' + T("編輯中","Editing") + '</div>' +
+      '<div class="sit">' + T("改動需按「OK」落實後才會反映結果。","Changes take effect after you press OK.") + '</div>';
     return;
   }
+  var g = gate();
   var names = {"1":T("情況 1 · A · 只有本案","Situation 1 · A · this case only"),
                "2":T("情況 2 · A · 偵測到多張","Situation 2 · A · multiple detected"),
                "3":T("情況 3 · B · 多張","Situation 3 · B · multiple"),
-               "4":T("情況 4 · B · 只有本案","Situation 4 · B · this case only")};
+               "4":T("情況 4 · B · 只有本案","Situation 4 · B · this case only"),
+               "null":T("尚未選擇聲明選項","No declaration option chosen yet")};
   v.className = "verdict " + (g.ok ? "pass" : "block");
-  var icon = g.ok ? "&#10003;" : "&#10007;";
-  var head = g.ok ? T("可以儲存","Ready to save") : T("未能儲存","Cannot save");
+  var icon = g.ok ? "&#10003;" : "&#9888;";
+  var head = g.ok ? T("成功儲存","Successfully saved") : T("發現錯誤","Error is found");
   var html = eb +
     '<div class="status"><span class="ic">' + icon + '</span>' + head + '</div>' +
-    '<div class="sit">' + names[g.s] + '</div>';
+    '<div class="sit">' + names[g.s === null ? "null" : g.s] + '</div>';
   if(!g.ok && g.need.length){
     html += '<div class="sit" style="margin-top:9px">' + T("尚欠:","Outstanding:") + '</div><ul class="need">';
     g.need.forEach(function(n){ html += "<li>" + n + "</li>"; });
@@ -892,13 +1145,17 @@ function renderVerdict(){
 function render(){
   var s = situation();
 
+  // keep entry identity valid: if current policy fell out of the live list, snap to first
+  if(live().length && !curInLive()) st.curRef = live()[0].ref;
+
   $("chA").classList.toggle("on", st.opt === "A");
   $("chB").classList.toggle("on", st.opt === "B");
   $("chA").querySelector("input").checked = st.opt === "A";
   $("chB").querySelector("input").checked = st.opt === "B";
 
+  var showCards = (st.opt !== "A") || (st.det === 0);   // cards show unless option A read-only table is active
   $("secA").hidden = (s !== "2");
-  $("secB").hidden = (st.opt !== "B");
+  $("secB").hidden = !showCards;
 
   var partial = (s === "3" && !allSelected());
   $("ac11").hidden = !partial;
@@ -909,9 +1166,11 @@ function render(){
     l.classList.toggle("on", on); l.querySelector("input").checked = on;
   });
   var oth = $("a11oth");
-  oth.hidden = !st.a11.other;
-  oth.placeholder = T("請註明其他原因","Please specify the other reason");
-  oth.classList.toggle("bad", !!st.a11.other && !st.a11oth.trim());
+  var showOth = st.a11.other && !(roForm() && !st.a11oth.trim());  // in display, blank = leave empty (hidden)
+  oth.hidden = !showOth;
+  oth.disabled = roForm();
+  oth.placeholder = roForm() ? "" : T("請註明其他原因","Please specify the other reason");
+  oth.classList.toggle("bad", !roForm() && !!st.a11.other && !st.a11oth.trim());
 
   document.querySelectorAll("#ac72 .opt").forEach(function(l){
     var k = l.getAttribute("data-a72"), on = !!st.a72[k];
@@ -919,7 +1178,9 @@ function render(){
   });
 
   if(s === "2") renderAc18();
-  if(st.opt === "B"){ renderCards(); renderBanner(); }
+  if(showCards){ renderCards(); renderBanner(); }
+  renderIdentity();      // entry-identity switcher (shared content)
+  renderHeader();        // green record header follows identity
   renderManualCards();   // manual cards + Add Policy — always available
   renderAfford();   // rail dev panel — always live
   renderTotal();    // iPad Total section — always shown
@@ -927,8 +1188,49 @@ function render(){
   document.querySelectorAll("#detseg button").forEach(function(b){
     b.setAttribute("aria-pressed", String(+b.getAttribute("data-det") === st.det));
   });
+  if($("adddet")) $("adddet").disabled = (st.det >= 3);
+
+  var lk = locked();
+  var g = gate();
+
+  var fb = $("formbody");
+  if(fb){
+    var host = $("edithost"), cont = document.querySelector(".content");
+    if(st.editing && !locked()){ if(fb.parentNode !== host) host.appendChild(fb); }
+    else { if(fb.parentNode !== cont) cont.insertBefore(fb, $("save").parentNode); if(st.editing) st.editing = false; }
+    fb.classList.toggle("rolock", roForm());
+  }
+  if($("editpanel")) $("editpanel").hidden = !st.editing;
+
+  // "Next" is navigation — never disabled; a failed gate shows an error alert instead of blocking the button
+  $("save").classList.remove("disabled");
+  $("save").disabled = false;
+  if($("addp")) $("addp").disabled = roForm();
+
+  // page-level "Error is found" alert: shown after a Next attempt while the gate is not satisfied
+  if(g.ok) st.saveTried = false;                 // errors resolved → clear
+  $("pgalert").hidden = !(st.saveTried && !g.ok);
+  if($("tabwarn")) $("tabwarn").hidden = g.ok;    // ⚠ on the Concurrent Submission tab when errors exist
+
+  // Gate 2 (Preview & Sign): enabled purely by a satisfied gate. Locked content is already valid, so App B can still sign.
+  var canPdf = g.ok;
+  $("genpdf").disabled = !canPdf;
+  renderPdfStatus(canPdf);
+  $("voidgrp").hidden = !lk;
 
   renderVerdict();
+}
+
+function renderPdfStatus(canPdf){
+  var el = $("pdfstat"); if(!el) return;
+  if(st.pdf.done){
+    el.innerHTML = '<span class="lock">' + T("已產生 PDF","PDF generated") + ' · ' + st.pdf.byApp + '</span><br>' +
+      T("共用內容已鎖定為唯讀。其他同批申請可沿用出 PDF;要改內容請先「作廢 PDF」。",
+        "Shared content locked read-only. Other apps in the batch can still sign; to edit, Void PDF first.");
+    return;
+  }
+  if(canPdf){ el.innerHTML = '<span class="ok">' + T("驗證通過 ✓","Passed ✓") + '</span> · ' + T("可預覽並簽署","ready to Preview & Sign"); return; }
+  el.innerHTML = '<span class="no">' + T("本頁有錯誤","Error on this page") + '</span> · ' + T("修正後才可預覽並簽署","fix errors to enable Preview & Sign");
 }
 
 function log(z,e){
@@ -936,23 +1238,25 @@ function log(z,e){
 }
 
 /* ---------- events ---------- */
-$("chA").addEventListener("change", function(){ st.opt = "A"; render(); });
-$("chB").addEventListener("change", function(){ st.opt = "B"; render(); });
+$("chA").addEventListener("change", function(){ if(roForm()){ render(); return; } st.opt = "A"; render(); });
+$("chB").addEventListener("change", function(){ if(roForm()){ render(); return; } st.opt = "B"; render(); });
 
 document.querySelectorAll("#ac11 .opt").forEach(function(l){
   l.addEventListener("click", function(ev){
     ev.preventDefault();
+    if(roForm()) return;
     var k = l.getAttribute("data-a11");
     st.a11[k] = !st.a11[k];
     if(k === "other" && !st.a11.other) st.a11oth = "";
     render();
   });
 });
-$("a11oth").addEventListener("input", function(){ st.a11oth = this.value; renderVerdict(); this.classList.toggle("bad", !this.value.trim()); });
+$("a11oth").addEventListener("input", function(){ if(roForm()) return; st.a11oth = this.value; renderVerdict(); this.classList.toggle("bad", !this.value.trim()); });
 
 document.querySelectorAll("#ac72 .opt").forEach(function(l){
   l.addEventListener("click", function(ev){
     ev.preventDefault();
+    if(roForm()) return;
     var k = l.getAttribute("data-a72");
     st.a72[k] = !st.a72[k];
     render();
@@ -962,28 +1266,47 @@ document.querySelectorAll("#ac72 .opt").forEach(function(l){
 document.querySelectorAll("#detseg button").forEach(function(b){
   b.addEventListener("click", function(){
     st.det = +b.getAttribute("data-det");
-    st.sel = {};
+    st.sel = {}; st.pdf = {done:false, byApp:"", frozenRefs:[]}; st.lateRefs = []; st.saved = false; st.saveTried = false;
     render();
     log("系統偵測改為 " + st.det + " 張其他保單。", "System now detects " + st.det + " other policies.");
   });
+});
+
+$("adddet").addEventListener("click", function(){
+  if(st.det >= 3) return;                 // capped (4 sample policies → current + up to 3 others)
+  var afterPdf = !!st.pdf.done;
+  st.det += 1;                            // one more OTHER detected policy; keep current identity (curRef)
+  var newRef = POLICIES[st.det] ? POLICIES[st.det].ref : null;   // the newly-added batch member
+  if(afterPdf && newRef && st.lateRefs.indexOf(newRef) < 0) st.lateRefs.push(newRef);  // added after lock → late
+  render();
+  if(afterPdf){
+    var lbl = APP_LBL[st.det] || ("App " + (st.det + 1));
+    log("示範:PDF 產生後才偵測到多 1 張(" + lbl + ")。它屬新一份聲明 — 切到其身份時清單只會顯示它自己。",
+        "Demo: one more policy detected AFTER the PDF (" + lbl + "). It is a new, separate declaration — switching to its identity shows only itself.");
+  } else {
+    log("示範:多偵測到 1 張其他保單(共 " + st.det + " 張其他保單,連本申請合共 " + (st.det + 1) + " 張)。",
+        "Demo: one more OTHER policy detected (now " + st.det + " others; " + (st.det + 1) + " cards incl. the current app).");
+  }
 });
 
 document.querySelectorAll(".sitbtn button").forEach(function(b){
   b.addEventListener("click", function(){
     var s = b.getAttribute("data-sit");
     st.a11 = {}; st.a11oth = ""; st.a72 = {}; st.sel = {}; st.manual = [];
+    st.pdf = {done:false, byApp:"", frozenRefs:[]}; st.lateRefs = []; st.saved = false; st.saveTried = false;
     if(s === "1"){ st.opt = "A"; st.det = 0; }
     if(s === "2"){ st.opt = "A"; st.det = 2; }
     if(s === "3"){ st.opt = "B"; st.det = 3; st.sel[POLICIES[0].ref] = true; st.sel[POLICIES[1].ref] = true; }
     if(s === "4"){ st.opt = "B"; st.det = 0; }
     render();
     var g = gate();
-    log("已跳到情況 " + s + "。" + (g.ok ? "現時可以儲存。" : "現時未能儲存。"),
-        "Jumped to situation " + s + ". " + (g.ok ? "Currently ready to save." : "Currently blocked."));
+    log("已跳到情況 " + s + "。" + (g.ok ? "現時可以前往下一步。" : "現時未能前往下一步。"),
+        "Jumped to situation " + s + ". " + (g.ok ? "Currently ready for Next." : "Currently blocked."));
   });
 });
 
 $("addp").addEventListener("click", function(){
+  if(roForm()) return;
   st.manual.push({ id:++st.mseq, mode:null, amt:0, freq:"monthly", pt:10 });
   render();
   log("已在畫面加入一張保單,請選擇付款模式。",
@@ -993,18 +1316,62 @@ $("addp").addEventListener("click", function(){
 $("save").addEventListener("click", function(){
   var g = gate();
   if(g.ok){
-    log("已儲存。情況 " + (g.s || "-") + " 通過 SAVE 這一關。產生 PDF 那一關(AC17)未包含於此原型。",
-        "Saved. Situation " + (g.s || "-") + " passes the SAVE gate. The Gen-PDF gate (AC17) is not part of this prototype.");
+    st.saved = true; st.savedSig = declSig(); st.saveTried = false;
+    log("驗證通過 —— 前往下一頁。", "Validation passed — proceeding to the next page.");
   } else {
-    log("未能儲存 — 尚欠:" + g.need.join("、"), "Cannot save — outstanding: " + g.need.join(", "));
+    st.saveTried = true;   // reveal the "Error is found" alert; the button itself is never disabled
+    log("本頁發現錯誤,不能前往下一頁。請按「編輯此記錄」修正。尚欠:" + g.need.join("、"),
+        "Errors found on this page — cannot proceed. Click \u201CEdit this record\u201D to fix. Outstanding: " + g.need.join(", "));
   }
   render();
 });
 
+$("editrec").addEventListener("click", function(){
+  if(locked()){
+    showLock(T("此記錄已由 " + st.pdf.byApp + " 產生 PDF。如需修改,請先作廢該 PDF。",
+               "This record already has a PDF generated by " + st.pdf.byApp + ". To make changes, please void that PDF first."));
+    log("攔截:記錄已鎖定(由 " + st.pdf.byApp + " 產生 PDF),不能進入編輯。", "Blocked: record locked (PDF by " + st.pdf.byApp + ") — cannot enter edit mode.");
+    return;
+  }
+  openEdit();
+  log("已進入全螢幕編輯模式。完成後按「OK」返回顯示模式。", "Entered full-screen edit mode. Press OK when done to return to display.");
+});
+// OK is never disabled — always returns to display; any remaining error shows as the page alert there
+$("editok").addEventListener("click", function(){ closeEdit(); log("已完成編輯,返回顯示模式。", "Editing done — back to display."); });
+$("editback").addEventListener("click", function(){ closeEdit(); log("已離開編輯模式。", "Left edit mode."); });
+
+$("genpdf").addEventListener("click", function(){
+  if($("genpdf").disabled || !gate().ok) return;
+  var ps = live(), app = T("本申請","this app");
+  for(var i=0;i<ps.length;i++){ if(ps[i].ref === st.curRef){ app = APP_LBL[i] || ("App "+(i+1)); break; } }
+  st.pdf = {done:true, byApp:app, frozenRefs: cardsList().map(function(p){ return p.ref; })};
+  render();
+  log("已產生 PDF(由 " + app + ")。共用聲明內容已鎖定為唯讀;其他同批申請可沿用此已鎖內容各自產生 PDF。撳「編輯此記錄」會被攔截;「作廢 PDF」可解鎖再編輯。",
+      "PDF generated (by " + app + "). The shared declaration is locked read-only; other apps in the batch can each sign using this locked content. Edit is intercepted; Void PDF unlocks for editing.");
+});
+
+function showLock(msg){ $("lockmsg").textContent = msg; $("lockmask").hidden = false; }
+$("lockok").addEventListener("click", function(){ $("lockmask").hidden = true; });
+$("lockmask").addEventListener("click", function(e){ if(e.target === this) this.hidden = true; });
+$("voidpdf").addEventListener("click", function(){
+  st.pdf = {done:false, byApp:"", frozenRefs:[]}; st.lateRefs = []; st.saveTried = false;
+  render();
+  log("已作廢 PDF — 記錄解鎖,可再次編輯。", "PDF voided — record unlocked, editable again.");
+});
+
+$("identseg").addEventListener("click", function(e){
+  var b = e.target.closest("button[data-ref]"); if(!b) return;
+  st.curRef = b.getAttribute("data-ref");
+  render();
+  log("已切換進入身份 —「本申請保單 / Current policy」標籤已移至對應保單(剔選狀態共用不變)。",
+      "Entry identity switched — the Current policy label moved to the matching card (shared tick state unchanged).");
+});
+
 $("rst").addEventListener("click", function(){
-  st = { opt:null, det:2, sel:{}, a11:{}, a11oth:"", a72:{},
+  st = { opt:null, det:0, sel:{}, curRef:POLICIES[0].ref, a11:{}, a11oth:"", a72:{},
          aff:{nla:800000, ndi:100000, mog:5000, cdi:50, ca:50}, pm:{},
-         manual:[], mseq:0 };
+         manual:[], mseq:0,
+         saved:false, savedSig:"", pdf:{done:false, byApp:"", frozenRefs:[]}, lateRefs:[], editing:false, saveTried:false };
   $("af_nla").value=800000; $("af_ndi").value=100000; $("af_mog").value=5000; $("af_cdi").value=50; $("af_ca").value=50;
   render();
   log("已重設。", "Reset.");
