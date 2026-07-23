@@ -31,7 +31,7 @@ body[data-lang="en"] .zh{display:none}
   font-size:12px;font-weight:700;padding:6px 14px;cursor:pointer}
 .langtog button[aria-pressed="true"]{background:var(--grn);color:#fff}
 
-.wrap{display:grid;grid-template-columns:320px minmax(0,1fr);gap:20px;padding:20px;align-items:start;max-width:1500px;margin:0 auto}
+.wrap{display:grid;grid-template-columns:320px auto;gap:20px;padding:20px;align-items:start;justify-content:center;max-width:1500px;margin:0 auto}
 @media(max-width:1080px){.wrap{grid-template-columns:1fr}}
 
 /* ---------- control rail ---------- */
@@ -72,8 +72,9 @@ body[data-lang="en"] .zh{display:none}
 .verdict .need li{margin:2px 0}
 
 /* ---------- ipad ---------- */
-.stage{display:flex;flex-direction:column;gap:14px;min-width:0}
-.ipad{background:#1A1A1A;border-radius:26px;padding:12px;box-shadow:0 18px 44px rgba(11,59,52,.22)}
+.stage{display:flex;flex-direction:column;gap:14px;min-width:0;width:800px;max-width:100%}
+.stage .log,.stage .oq{overflow-wrap:anywhere}
+.ipad{background:#1A1A1A;border-radius:26px;padding:12px;box-shadow:0 18px 44px rgba(11,59,52,.22);width:1000px;zoom:.8}
 .screen{background:#fff;border-radius:16px;overflow:hidden}
 .navrow{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--mut)}
 .navrow .ttl{flex:1;text-align:center;font-weight:700;color:var(--ink)}
@@ -176,8 +177,14 @@ table.ac18 tr:last-child td{border-bottom:0}
 .rolock .choice:hover,.rolock .opt:hover,.rolock .pcard:hover{border-color:#E5E9E7}
 .rolock .choice{background:#F4F6F5;border-color:#E5E9E7}
 .rolock .choice.on{background:#E8EDEB;border-color:#CBD5D0}
-.rolock .opt{background:transparent;border-color:#E5E9E7}
-.rolock .opt.on{background:transparent;border-color:#CBD5D0}
+.rolock .opt{background:transparent;border-color:transparent;padding:3px 0;margin-bottom:1px}
+.rolock .opt:hover{border-color:transparent}
+.rolock .opt.on{background:transparent;border-color:transparent}
+/* display: reason blocks become plain (no card border / amber bg), tighter spacing */
+.rolock .reason.req{border-color:transparent;background:transparent}
+.rolock .reason{padding:0;margin-top:12px}
+.rolock .reason .rq{margin-bottom:2px}
+.rolock .reason .tag{margin-bottom:5px}
 .rolock .choice input,.rolock .opt input{accent-color:#6B7A75}
 .rolock .pcard{opacity:1;background:#FAFBFB;border-color:#E5E9E7}
 .rolock .pcard.on{border-color:#CBD5D0;background:#F1F4F3}
@@ -837,21 +844,21 @@ function a72Filled(){ return !!(st.a72.pending || st.a72.redundant); }
 function gate(){
   var s = situation(), need = [];
   if(s === null) return {s:null, ok:false, need:[T("請先選擇一個選項","Choose an option first")]};
+  var cardsShown = (st.opt !== "A") || (st.det === 0);   // tickable cards are on screen
   // D1: any incomplete manual card blocks save
   if(anyManualIncomplete()) need.push(T("完成或刪除未填妥的手動保單","Complete or remove the unfinished manual policy"));
-  // E4: the current-policy card must be ticked to proceed (option B selectable cards)
-  if(st.opt === "B" && curInLive() && !st.sel[st.curRef]) need.push(T("必須勾選「本申請保單 Current policy」","Tick the Current policy card"));
+  // E4: the current-policy card must be ticked whenever the selectable cards are shown
+  if(cardsShown && curInLive() && !st.sel[st.curRef]) need.push(T("必須勾選「本申請保單 Current policy」","Tick the Current policy card"));
   if(s === "1")  return {s:s, ok:need.length === 0, need:need};
   if(s === "4") return {s:s, ok:need.length === 0, need:need};
   if(s === "2"){
     if(!a72Filled()) need.push(T("AC7.2 取消選取交易的原因","AC7.2 de-select reason"));
     return {s:s, ok:need.length === 0, need:need};
   }
-  /* s === "3" (covers all-selected case too) */
-  if(allSelected()) return {s:s, ok:need.length === 0, need:need};
+  /* s === "3" — option B, multiple detected */
   if(selCount() === 0) need.push(T("最少選取一張保單","Select at least one policy"));
-  if(!a11Filled()) need.push(T("AC11 一併投保原因","AC11 generic reason"));
-  if(!a72Filled()) need.push(T("AC7.2 取消選取交易的原因","AC7.2 de-select reason"));
+  if(!a11Filled()) need.push(T("AC11 一併投保原因","AC11 generic reason"));            // required even when all selected (#7/#8)
+  if(!allSelected() && !a72Filled()) need.push(T("AC7.2 取消選取交易的原因","AC7.2 de-select reason")); // only when partial
   return {s:s, ok:need.length === 0, need:need};
 }
 
@@ -1158,8 +1165,8 @@ function render(){
   $("secB").hidden = !showCards;
 
   var partial = (s === "3" && !allSelected());
-  $("ac11").hidden = !partial;
-  $("ac72").hidden = !(s === "2" || partial);
+  $("ac11").hidden = (s !== "3");                       // AC11 required for all of situation 3 (incl. all selected)
+  $("ac72").hidden = !(s === "2" || partial);           // AC7.2 only when de-selecting (option A multi, or partial)
 
   document.querySelectorAll("#ac11 .opt").forEach(function(l){
     var k = l.getAttribute("data-a11"), on = !!st.a11[k];
